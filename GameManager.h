@@ -5,7 +5,18 @@
 
 class CGameManager
 {
+private:
+	// Variables //
 
+	tle::I3DEngine* mpMyEngine;
+	tle::ICamera* mpMyCamera;
+
+	int mHorizontal;			// desktop X resolution
+	int mVertical;				// desktop Y resolution
+
+	bool mFullscreen = false;
+
+	float mFrameTime;			// the time in seconds since the last update
 
 public:
 	// Constructor
@@ -17,6 +28,10 @@ public:
 	void RunGame();
 
 private:
+	// Private Methods //
+
 	// Get the horizontal and vertical screen sizes in pixel
 	void GetDesktopResolution(int& horizontal, int& vertical);
+	bool CreateEngine();
+	void AddMediaFolders();
 };

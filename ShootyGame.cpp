@@ -3,7 +3,7 @@
 #include <TL-Engine.h>	// TL-Engine include file and namespace
 using namespace tle;
 
-void main()
+void oldmain()
 {
 	// Create a 3D engine (using TLX engine here) and open a window for it
 	I3DEngine* myEngine = New3DEngine( kTLX );
@@ -34,7 +34,7 @@ void main()
 #include <memory>
 
 
-int main()
+void main()
 {
 	std::unique_ptr<CGameManager> pGame = std::make_unique<CGameManager>();
 
