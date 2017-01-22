@@ -3,6 +3,7 @@
 //-----------------------------------------------------------------------------
 
 #include "GameManager.h"
+#include "MainMenu.h"
 #include "wtypes.h"
 #include "Globals.h"
 
@@ -21,6 +22,9 @@ CGameManager::CGameManager()
 
 	// Create the main default camera
 	mpMyCamera = mpMyEngine->CreateCamera();
+
+	// create the main menu straight away
+	mpMenu = std::make_unique<CMainMenu>(mpMyEngine, mMenuState, mHorizontal, mVertical, mFullscreen);
 
 	// initialise the frame timer
 	mFrameTime = mpMyEngine->Timer();
@@ -49,6 +53,10 @@ void CGameManager::RunGame()
 		if (mpMyEngine->IsActive())
 		{
 			// GAME CODE HERE...
+		}
+		else if (mGameState == GameStates::PLAYING)
+		{
+			inactiveWindowControl();
 		}
 	}
 }
@@ -101,4 +109,14 @@ void CGameManager::AddMediaFolders()
 	{
 		mpMyEngine->AddMediaFolder(MEDIA_FOLDERS[i]);
 	}
+}
+
+void CGameManager::inactiveWindowControl()
+{
+	// if the window loses focus during a gam
+	mGameState = GameStates::PAUSED;
+
+	//menu = new PauseMenu();
+
+	mpMyEngine->StopMouseCapture();	// return the mouse cursor so the menu can be operated
 }
