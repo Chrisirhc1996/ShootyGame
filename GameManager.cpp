@@ -53,6 +53,10 @@ void CGameManager::RunGame()
 		if (mpMyEngine->IsActive())
 		{
 			// GAME CODE HERE...
+			if (mMenuState == MenuStates::MAIN_MENU)
+			{
+				mpMenu->ButtonPresses();
+			}
 		}
 		else if (mGameState == GameStates::PLAYING)
 		{

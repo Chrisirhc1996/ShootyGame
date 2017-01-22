@@ -23,3 +23,11 @@ CMainMenu::CMainMenu(tle::I3DEngine* pMyEngine, MenuStates& state, int horiz, in
 CMainMenu::~CMainMenu()
 {
 }
+
+// do cursor collision detection on the buttons
+void CMainMenu::ButtonPresses()
+{
+	UpdateMousePos();
+
+	SelectMenuOption();
+}
