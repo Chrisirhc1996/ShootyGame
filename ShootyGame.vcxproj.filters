@@ -1,79 +1,112 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Bullets.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Lasers.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Game Objects\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Level.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Plasma.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Game Objects\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Rockets.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Weapon.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Game Objects\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ShootyGame.cpp" />
+    <ClCompile Include="Bullets.cpp">
+      <Filter>Weapons System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lasers.cpp">
+      <Filter>Weapons System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Plasma.cpp">
+      <Filter>Weapons System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rockets.cpp">
+      <Filter>Weapons System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Weapons System</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuSystem.cpp">
+      <Filter>Menu System</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Game Core</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Menu System\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Source Files">
+    <Filter Include="Weapons System">
+      <UniqueIdentifier>{aa47aec2-5e01-40df-b7f1-40a3799fb44b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Weapons System\Header Files">
+      <UniqueIdentifier>{fbd80abb-16fa-4e7d-8cd1-2a4985d6b1e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Weapons System\Source Files">
+      <UniqueIdentifier>{242f2fb5-7609-486a-ab18-643f1e739c4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menu System">
+      <UniqueIdentifier>{5a7fbba2-2ef6-489a-a9a3-8fe3998b2f08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menu System\Header Files">
+      <UniqueIdentifier>{67a4b950-91d0-4e03-9f85-60bc4adf2d88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menu System\Source Files">
+      <UniqueIdentifier>{442c619b-c6a6-45ae-b794-32ab921f09a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects">
+      <UniqueIdentifier>{2c5dcad8-ab48-4242-adaa-ac0191cd4c25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Source Files">
       <UniqueIdentifier>{d330094d-df4a-4fd7-a4c7-bf297473b474}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
+    <Filter Include="Game Objects\Header Files">
       <UniqueIdentifier>{0a016e82-81e1-47de-9669-ab2594ca6840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Core">
+      <UniqueIdentifier>{3b5795a0-6f63-453d-9c84-baa670b5d880}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bullets.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Lasers.h">
-      <Filter>Header Files</Filter>
+      <Filter>Game Objects\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Level.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Plasma.h">
-      <Filter>Header Files</Filter>
+      <Filter>Game Objects\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
+      <Filter>Game Objects\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullets.h">
+      <Filter>Weapons System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lasers.h">
+      <Filter>Weapons System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Plasma.h">
+      <Filter>Weapons System\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rockets.h">
-      <Filter>Header Files</Filter>
+      <Filter>Weapons System\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Weapon.h">
-      <Filter>Header Files</Filter>
+      <Filter>Weapons System</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuSystem.h">
+      <Filter>Menu System</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Game Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Game Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Menu System\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
