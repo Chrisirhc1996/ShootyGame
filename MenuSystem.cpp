@@ -20,6 +20,11 @@ CMenuSystem::CMenuSystem(tle::I3DEngine* pMyEngine, int horiz, int vert, bool fu
 
 CMenuSystem::~CMenuSystem()
 {
+	// Clean up the sprites
+	for (auto& option : mMenuOptions)
+	{
+		delete option->button;
+	}
 }
 
 
@@ -50,7 +55,7 @@ void CMenuSystem::CreateButton(const MenuButton & button)
 }
 
 // Do cursor collision detection on the buttons
-void CMenuSystem::SelectMenuOption()
+void CMenuSystem::SelectMenuOption(GameStates& state)
 {
 	int heightAdjustment = 0;
 	int widthAdjustment = 0;
@@ -62,30 +67,50 @@ void CMenuSystem::SelectMenuOption()
 
 	int index = 0;
 
-	// go through each menu option
+	// Go through each menu option
 	for (auto& option : mMenuOptions)
 	{
 		float buttonXPos = option->button->GetX() + option->radius - static_cast<float>(widthAdjustment);
 		float buttonYPos = option->button->GetY() + option->radius - static_cast<float>(heightAdjustment);
 
-		// vector from pointer to button centre
+		// Vector from pointer to button centre
 		float x = buttonXPos - static_cast<float>(mMouseX);
 		float y = buttonYPos - static_cast<float>(mMouseY);
 
-		// distance from the pointer to the button centre
+		// Distance from the pointer to the button centre
 		float distance = sqrtf(x*x + y*y);
 
-		// if the mouse pointer is in collision with the menu options
+		// If the mouse pointer is in collision with the menu options
 		if (distance < option->radius)
 		{
-			// active menu buttons
+			// Active menu buttons
 			if (mpMyEngine->KeyHit(SELECT))
 			{
-				// main menu selections
+				// Main menu selections
 				if (mMenuState == MenuStates::MAIN_MENU)
 				{
 					if (option->fileName == PLAY.fileName)
 					{
+						state = GameStates::PLAYING;
+						break;
+					}
+					else if (option->fileName == OPTIONS.fileName)
+					{
+						//mMenuState = MenuStates::OPTIONS_MENU;
+						break;
+					}
+					else if (option->fileName == QUIT.fileName)
+					{
+						mpMyEngine->Stop();
+						break;
+					}
+				}
+				// In-game pause menu
+				else if (mMenuState == MenuStates::PAUSE_MENU)
+				{
+					if (option->fileName == PLAY.fileName)
+					{
+						state = GameStates::PLAYING;
 						break;
 					}
 					else if (option->fileName == OPTIONS.fileName)

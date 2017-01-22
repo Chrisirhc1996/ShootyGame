@@ -35,9 +35,9 @@ public:
 	// Constructor
 	CMenuSystem(tle::I3DEngine* pMyEngine, int horiz, int vert, bool fullscreen);
 	//  Destructor
-	~CMenuSystem();
+	virtual ~CMenuSystem();
 
-	virtual void ButtonPresses() = 0;
+	virtual void ButtonPresses(GameStates& state) = 0;
 
 
 protected:
@@ -48,7 +48,7 @@ protected:
 	// Create the sprite and add the struct of details to the button vector
 	void CreateButton(const MenuButton& button);
 	// Do cursor collision detection on the buttons
-	void SelectMenuOption();
+	void SelectMenuOption(GameStates& state);
 
 	// Getters
 	const MenuStates& GetMenuState() const { return mMenuState; }

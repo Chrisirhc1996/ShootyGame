@@ -4,6 +4,7 @@
 
 #include "GameManager.h"
 #include "MainMenu.h"
+#include "PauseMenu.h"
 #include "wtypes.h"
 #include "Globals.h"
 
@@ -51,16 +52,34 @@ void CGameManager::RunGame()
 
 		// true when the window is in the foreground and selected
 		if (mpMyEngine->IsActive())
-		{
-			// GAME CODE HERE...
-			if (mMenuState == MenuStates::MAIN_MENU)
+		{		
+
+			if (mGameState == GameStates::PLAYING)
 			{
-				mpMenu->ButtonPresses();
+				if (mpMyEngine->KeyHit(PAUSE))
+					PauseGame();
+
+				//--------------------------------------
+				//
+				//
+				// GAME CODE HERE...
+				//
+				//
+				//--------------------------------------
+			}
+
+			if (mGameState == GameStates::MENU || mGameState == GameStates::PAUSED)
+			{
+				mpMenu->ButtonPresses(mGameState);
+
+				// Release the memory in the unique pointer removing the menu 
+				if (mGameState == GameStates::PLAYING)
+					mpMenu.reset();
 			}
 		}
 		else if (mGameState == GameStates::PLAYING)
 		{
-			inactiveWindowControl();
+			InactiveWindowControl();
 		}
 	}
 }
@@ -115,12 +134,19 @@ void CGameManager::AddMediaFolders()
 	}
 }
 
-void CGameManager::inactiveWindowControl()
+// Bring up the pause menu
+void CGameManager::PauseGame()
 {
-	// if the window loses focus during a gam
+	// if the window loses focus during a game
 	mGameState = GameStates::PAUSED;
+	mMenuState = MenuStates::PAUSE_MENU;
 
-	//menu = new PauseMenu();
+	mpMenu = std::make_unique<CPauseMenu>(mpMyEngine, mMenuState, mHorizontal, mVertical, mFullscreen);
 
 	mpMyEngine->StopMouseCapture();	// return the mouse cursor so the menu can be operated
+}
+
+void CGameManager::InactiveWindowControl()
+{
+	PauseGame();
 }

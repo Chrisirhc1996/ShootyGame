@@ -25,9 +25,9 @@ CMainMenu::~CMainMenu()
 }
 
 // do cursor collision detection on the buttons
-void CMainMenu::ButtonPresses()
+void CMainMenu::ButtonPresses(GameStates& state)
 {
 	UpdateMousePos();
 
-	SelectMenuOption();
+	SelectMenuOption(state);
 }

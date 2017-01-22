@@ -14,7 +14,9 @@ CPauseMenu::CPauseMenu(tle::I3DEngine* pMyEngine, MenuStates& state, int horiz, 
 	SetMenuState(state);
 
 	// create menu buttons
-	// CreateButton(PLAY);
+	CreateButton(PLAY);
+	CreateButton(OPTIONS);
+	CreateButton(QUIT);
 }
 
 
@@ -23,9 +25,9 @@ CPauseMenu::~CPauseMenu()
 }
 
 // do cursor collision detection on the buttons
-void CPauseMenu::ButtonPresses()
+void CPauseMenu::ButtonPresses(GameStates& state)
 {
 	UpdateMousePos();
 
-	SelectMenuOption();
+	SelectMenuOption(state);
 }

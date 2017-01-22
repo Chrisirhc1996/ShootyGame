@@ -12,7 +12,7 @@ public:
 	// Constructor
 	CWeapon();
 	//  Destructor
-	~CWeapon();
+	virtual ~CWeapon();
 
 private:
 	// Private Methods //

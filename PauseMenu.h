@@ -10,6 +10,6 @@ public:
 	virtual ~CPauseMenu();
 
 	// do cursor collision detection on the buttons
-	virtual void ButtonPresses();
+	virtual void ButtonPresses(GameStates& state);
 };
 

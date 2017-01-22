@@ -41,7 +41,9 @@ private:
 	void GetDesktopResolution(int& horizontal, int& vertical);
 	bool CreateEngine();
 	void AddMediaFolders();
+	// Bring up the pause menu
+	void PauseGame();
 	// if the game loses focus(minimised etc) and if in a game, the game will be paused 
 	// and the pause menu created.  Always returns the mouse cursor to the user
-	void inactiveWindowControl();
+	void InactiveWindowControl();
 };
