@@ -1,9 +1,3 @@
-﻿  MainMenu.cpp
-  GameManager.cpp
-  Generating Code...
-  Compiling...
-  ShootyGame.cpp
-  MenuSystem.cpp
-  Generating Code...
+﻿  MenuSystem.cpp
   ShootyGame.vcxproj -> E:\Repos\ShootyGame\\ShootyGameDebug.exe
   ShootyGame.vcxproj -> E:\Repos\ShootyGame\\ShootyGame.pdb (Full PDB)

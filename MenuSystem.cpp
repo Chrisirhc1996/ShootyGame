@@ -37,7 +37,7 @@ void CMenuSystem::UpdateMousePos()
 // Create the sprite and add the struct of details to the button vector
 void CMenuSystem::CreateButton(const MenuButton & button)
 {
-	std::unique_ptr<MenuOption> option = make_unique<MenuOption>();
+	std::unique_ptr<SMenuOption> option = make_unique<SMenuOption>();
 	option->fileName = button.fileName;
 	option->button = mpMyEngine->CreateSprite(
 		button.fileName,
@@ -90,7 +90,7 @@ void CMenuSystem::SelectMenuOption()
 					}
 					else if (option->fileName == OPTIONS.fileName)
 					{
-						mMenuState = MenuStates::OPTIONS_MENU;
+						//mMenuState = MenuStates::OPTIONS_MENU;
 						break;
 					}
 					else if (option->fileName == QUIT.fileName)

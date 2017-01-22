@@ -21,14 +21,15 @@ private:
 	int mVertWindowSize;
 	bool mFullscreen;
 
-	struct MenuOption
+	struct SMenuOption
 	{
 		string fileName;
 		tle::ISprite* button;
 		float radius;
 	};
 
-	std::vector<std::unique_ptr<MenuOption>> mMenuOptions;	// holds all buttons currently created
+	std::vector<std::unique_ptr<SMenuOption>> mMenuOptions;	// holds all buttons currently created
+
 
 public:
 	// Constructor
@@ -37,6 +38,7 @@ public:
 	~CMenuSystem();
 
 	virtual void ButtonPresses() = 0;
+
 
 protected:
 	// Protected Methods //

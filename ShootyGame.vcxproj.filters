@@ -1,30 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Game Objects\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Game Objects\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Game Objects\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ShootyGame.cpp" />
     <ClCompile Include="Bullets.cpp">
-      <Filter>Weapons System\Source Files</Filter>
+      <Filter>Game Objects\Weapons System\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Lasers.cpp">
-      <Filter>Weapons System\Source Files</Filter>
+      <Filter>Game Objects\Weapons System\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Plasma.cpp">
-      <Filter>Weapons System\Source Files</Filter>
+      <Filter>Game Objects\Weapons System\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Rockets.cpp">
-      <Filter>Weapons System\Source Files</Filter>
+      <Filter>Game Objects\Weapons System\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
-      <Filter>Weapons System</Filter>
+      <Filter>Game Objects\Weapons System</Filter>
     </ClCompile>
     <ClCompile Include="MenuSystem.cpp">
       <Filter>Menu System</Filter>
@@ -35,20 +26,26 @@
     <ClCompile Include="MainMenu.cpp">
       <Filter>Menu System\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PauseMenu.cpp">
+      <Filter>Menu System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsMenu.cpp">
+      <Filter>Menu System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Game Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Game Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Weapons System">
-      <UniqueIdentifier>{aa47aec2-5e01-40df-b7f1-40a3799fb44b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Weapons System\Header Files">
-      <UniqueIdentifier>{fbd80abb-16fa-4e7d-8cd1-2a4985d6b1e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Weapons System\Source Files">
-      <UniqueIdentifier>{242f2fb5-7609-486a-ab18-643f1e739c4d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Menu System">
       <UniqueIdentifier>{5a7fbba2-2ef6-489a-a9a3-8fe3998b2f08}</UniqueIdentifier>
     </Filter>
@@ -61,40 +58,43 @@
     <Filter Include="Game Objects">
       <UniqueIdentifier>{2c5dcad8-ab48-4242-adaa-ac0191cd4c25}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Objects\Source Files">
-      <UniqueIdentifier>{d330094d-df4a-4fd7-a4c7-bf297473b474}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Objects\Header Files">
-      <UniqueIdentifier>{0a016e82-81e1-47de-9669-ab2594ca6840}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game Core">
       <UniqueIdentifier>{3b5795a0-6f63-453d-9c84-baa670b5d880}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Objects\Enemies">
+      <UniqueIdentifier>{6a1e915f-d98d-45ba-b542-cee79424ab91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Player">
+      <UniqueIdentifier>{9ae98151-ca1b-4dcf-908b-1d5e07c4062b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Weapons System">
+      <UniqueIdentifier>{aa47aec2-5e01-40df-b7f1-40a3799fb44b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Weapons System\Header Files">
+      <UniqueIdentifier>{fbd80abb-16fa-4e7d-8cd1-2a4985d6b1e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Weapons System\Source Files">
+      <UniqueIdentifier>{242f2fb5-7609-486a-ab18-643f1e739c4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Levels">
+      <UniqueIdentifier>{c96cc377-e4b1-49b7-8985-ff8a42eccea5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enemy.h">
-      <Filter>Game Objects\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Game Objects\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Game Objects\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Bullets.h">
-      <Filter>Weapons System\Header Files</Filter>
+      <Filter>Game Objects\Weapons System\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Lasers.h">
-      <Filter>Weapons System\Header Files</Filter>
+      <Filter>Game Objects\Weapons System\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Plasma.h">
-      <Filter>Weapons System\Header Files</Filter>
+      <Filter>Game Objects\Weapons System\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rockets.h">
-      <Filter>Weapons System\Header Files</Filter>
+      <Filter>Game Objects\Weapons System\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Weapon.h">
-      <Filter>Weapons System</Filter>
+      <Filter>Game Objects\Weapons System</Filter>
     </ClInclude>
     <ClInclude Include="MenuSystem.h">
       <Filter>Menu System</Filter>
@@ -107,6 +107,21 @@
     </ClInclude>
     <ClInclude Include="MainMenu.h">
       <Filter>Menu System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseMenu.h">
+      <Filter>Menu System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsMenu.h">
+      <Filter>Menu System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Game Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Levels</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
