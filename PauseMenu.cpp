@@ -14,9 +14,9 @@ CPauseMenu::CPauseMenu(tle::I3DEngine* pMyEngine, MenuStates& state, int horiz, 
 	SetMenuState(state);
 
 	// create menu buttons
-	CreateButton(PLAY);
-	CreateButton(OPTIONS);
-	CreateButton(QUIT);
+	CreateButton(UNPAUSE);
+	CreateButton(PAUSE_OPTIONS);
+	CreateButton(PAUSE_QUIT);
 }
 
 

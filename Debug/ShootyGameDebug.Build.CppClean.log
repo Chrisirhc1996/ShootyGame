@@ -5,12 +5,15 @@ e:\repos\shootygame\debug\enemy.obj
 e:\repos\shootygame\debug\gamemanager.obj
 e:\repos\shootygame\debug\lasers.obj
 e:\repos\shootygame\debug\level.obj
-e:\repos\shootygame\debug\menusystem.obj
 e:\repos\shootygame\debug\plasma.obj
 e:\repos\shootygame\debug\player.obj
 e:\repos\shootygame\debug\rockets.obj
 e:\repos\shootygame\debug\shootygame.obj
 e:\repos\shootygame\debug\weapon.obj
+e:\repos\shootygame\debug\menusystem.obj
+e:\repos\shootygame\debug\mainmenu.obj
+e:\repos\shootygame\debug\optionsmenu.obj
+e:\repos\shootygame\debug\pausemenu.obj
 e:\repos\shootygame\shootygamedebug.ilk
 e:\repos\shootygame\shootygamedebug.exe
 e:\repos\shootygame\shootygame.pdb
