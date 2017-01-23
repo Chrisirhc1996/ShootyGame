@@ -68,12 +68,25 @@ void CGameManager::RunGame()
 				//--------------------------------------
 			}
 
-			if (mGameState == GameStates::MENU || mGameState == GameStates::PAUSED)
+			if (mGameState == GameStates::MENU)
 			{
 				mpMenu->ButtonPresses(mGameState);
-
-				// Release the memory in the unique pointer removing the menu 
+				
 				if (mGameState == GameStates::PLAYING)
+				{
+					// Release the memory in the unique pointer removing the menu
+					mpMenu.reset();
+					
+					// Create the level
+					mpLevel = std::make_unique<CLevel>();
+				}
+			}
+			else if (mGameState == GameStates::PAUSED)
+			{
+				mpMenu->ButtonPresses(mGameState);
+	 
+				if (mGameState == GameStates::PLAYING)
+					// Release the memory in the unique pointer removing the menu
 					mpMenu.reset();
 			}
 		}
