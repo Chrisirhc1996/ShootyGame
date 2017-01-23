@@ -22,10 +22,13 @@ CGameManager::CGameManager()
 	AddMediaFolders();
 
 	// Create the main default camera
-	mpMyCamera = mpMyEngine->CreateCamera();
+	mpMyCamera = mpMyEngine->CreateCamera(tle::kManual, 0.0f, 0.0f, -100.0f);
 
 	// create the main menu straight away
 	mpMenu = std::make_unique<CMainMenu>(mpMyEngine, mMenuState, mHorizontal, mVertical, mFullscreen);
+
+	// Create meshes
+	mpPlayerMesh = mpMyEngine->LoadMesh(SPACESHIP_MESH);
 
 	// initialise the frame timer
 	mFrameTime = mpMyEngine->Timer();
@@ -34,8 +37,21 @@ CGameManager::CGameManager()
 
 CGameManager::~CGameManager()
 {
+	// Cleanup the level if not already done
+	if (mpLevel)
+		mpLevel.reset();
+
+	// Cleanup the menu if not already done
+	if (mpMenu)
+		mpMenu.reset();
+
+	// Cleanup the meshes
+	mpMyEngine->RemoveMesh(mpPlayerMesh);
+	mpPlayerMesh = nullptr;
+
 	// Delete the 3D engine now we are finished with it
 	mpMyEngine->Delete();
+	mpMyEngine = nullptr;
 }
 
 // Main game loop, the game ends when this exits
@@ -59,13 +75,10 @@ void CGameManager::RunGame()
 				if (mpMyEngine->KeyHit(PAUSE))
 					PauseGame();
 
-				//--------------------------------------
-				//
-				//
+				//--------------------------------------------------------
 				// GAME CODE HERE...
-				//
-				//
-				//--------------------------------------
+				//--------------------------------------------------------
+				mpLevel->PlayLevel(mFrameTime);
 			}
 
 			if (mGameState == GameStates::MENU)
@@ -78,7 +91,7 @@ void CGameManager::RunGame()
 					mpMenu.reset();
 					
 					// Create the level
-					mpLevel = std::make_unique<CLevel>();
+					mpLevel = std::make_unique<CLevel>(mpMyEngine, mpPlayerMesh);
 				}
 			}
 			else if (mGameState == GameStates::PAUSED)
@@ -86,8 +99,22 @@ void CGameManager::RunGame()
 				mpMenu->ButtonPresses(mGameState);
 	 
 				if (mGameState == GameStates::PLAYING)
+				{
 					// Release the memory in the unique pointer removing the menu
 					mpMenu.reset();
+				}
+
+				if (mGameState == GameStates::MENU)
+				{
+					// The player has exited back to the main menu
+
+					// Delete the pause menu to make way for the main menu
+					mpMenu.reset();
+					// Delete the game level as no longer need it
+					mpLevel.reset();
+					// Recreate the main menu
+					mpMenu = std::make_unique<CMainMenu>(mpMyEngine, mMenuState, mHorizontal, mVertical, mFullscreen);
+				}
 			}
 		}
 		else if (mGameState == GameStates::PLAYING)

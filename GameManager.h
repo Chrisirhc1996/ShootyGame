@@ -15,6 +15,8 @@ private:
 	tle::I3DEngine* mpMyEngine;
 	tle::ICamera* mpMyCamera;
 
+	tle::IMesh* mpPlayerMesh;
+
 	int mHorizontal;				// Desktop X resolution
 	int mVertical;					// Desktop Y resolution
 
