@@ -20,10 +20,9 @@ CMenuSystem::CMenuSystem(tle::I3DEngine* pMyEngine, int horiz, int vert, bool fu
 
 CMenuSystem::~CMenuSystem()
 {
-	// Clean up the sprites
 	for (auto& option : mMenuOptions)
 	{
-		delete option->button;
+		mpMyEngine->RemoveSprite(option->button);
 	}
 }
 
@@ -108,19 +107,20 @@ void CMenuSystem::SelectMenuOption(GameStates& state)
 				// In-game pause menu
 				else if (mMenuState == MenuStates::PAUSE_MENU)
 				{
-					if (option->fileName == PLAY.fileName)
+					if (option->fileName == UNPAUSE.fileName)
 					{
 						state = GameStates::PLAYING;
 						break;
 					}
-					else if (option->fileName == OPTIONS.fileName)
+					else if (option->fileName == PAUSE_OPTIONS.fileName)
 					{
 						//mMenuState = MenuStates::OPTIONS_MENU;
 						break;
 					}
-					else if (option->fileName == QUIT.fileName)
+					else if (option->fileName == QUIT_TO_MENU.fileName)
 					{
-						mpMyEngine->Stop();
+						state = GameStates::MENU;
+						mMenuState = MenuStates::MAIN_MENU;					
 						break;
 					}
 				}
