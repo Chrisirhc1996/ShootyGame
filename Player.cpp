@@ -9,7 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CPlayer::CPlayer()
+CPlayer::CPlayer(float xPos, float yPos) :
+  mXPos{xPos}, mYPos{yPos}
 {
 }
 
