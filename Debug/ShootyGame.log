@@ -1,8 +1,6 @@
-﻿  Player.cpp
+﻿  PauseMenu.cpp
+  OptionsMenu.cpp
+  MainMenu.cpp
   Generating Code...
-  Skipping... (no relevant changes detected)
-  ShootyGame.cpp
-  Level.cpp
-  GameManager.cpp
   ShootyGame.vcxproj -> E:\Repos\ShootyGame\\ShootyGameDebug.exe
   ShootyGame.vcxproj -> E:\Repos\ShootyGame\\ShootyGame.pdb (Full PDB)

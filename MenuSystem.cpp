@@ -10,8 +10,9 @@
 //-----------------------------------------------------------------------------
 
 
-CMenuSystem::CMenuSystem(tle::I3DEngine* pMyEngine, int horiz, int vert, bool fullscreen) :
-	mpMyEngine{ pMyEngine }, mHorizWindowSize{ horiz }, mVertWindowSize{ vert }, mFullscreen{ fullscreen }
+CMenuSystem::CMenuSystem(tle::I3DEngine* pMyEngine, MenuStates& menuState, int horiz, int vert, bool fullscreen) :
+	mpMyEngine{ pMyEngine }, mMenuState{ menuState },  mHorizWindowSize { horiz }, 
+	mVertWindowSize{ vert }, mFullscreen{ fullscreen }
 {
 	// We always want control of the mouse pointer when we have a menu open
 	mpMyEngine->StopMouseCapture();

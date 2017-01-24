@@ -17,17 +17,17 @@ private:
 
 	tle::IMesh* mpPlayerMesh;
 
-	int mHorizontal;				// Desktop X resolution
-	int mVertical;					// Desktop Y resolution
+	int mHorizontal = 1920;				// Desktop X resolution
+	int mVertical = 1080;				// Desktop Y resolution
 
 	bool mFullscreen = false;
 
-	float mFrameTime;				// The time in seconds since the last update
+	float mFrameTime;					// The time in seconds since the last update
 
-	GameStates mGameState = GameStates::MENU;		// Overall state of the game, i.e. playing, paused or in the menu	
+	GameStates mGameState = GameStates::MENU;			// Overall state of the game, i.e. playing, paused or in the menu	
 	MenuStates mMenuState = MenuStates::MAIN_MENU;		// States which menu we are in
-	std::unique_ptr<CMenuSystem> mpMenu;			// Handle for the menu system
-	std::unique_ptr<CLevel> mpLevel;			// Handle for the game level
+	std::unique_ptr<CMenuSystem> mpMenu;				// Handle for the menu system
+	std::unique_ptr<CLevel> mpLevel;					// Handle for the game level
 
 public:
 	// Constructor

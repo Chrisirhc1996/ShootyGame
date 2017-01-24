@@ -15,7 +15,7 @@ CLevel::CLevel(tle::I3DEngine* pMyEngine, tle::IMesh* pPlayerMesh) :
 	mpMyEngine{ pMyEngine }, mpPlayerMesh{ pPlayerMesh }
 {
 	mpPlayer = std::make_unique<CPlayer>(pMyEngine, pPlayerMesh, -60.0f, 0.0f);
-	mpUIBorder = mpMyEngine->CreateSprite(BORDER, 0.0f, 0.0f);
+	mpUIBorder = mpMyEngine->CreateSprite(BORDER, 0.0f, 0.0f, 1.0f);
 }
 
 

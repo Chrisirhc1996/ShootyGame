@@ -22,7 +22,7 @@ CGameManager::CGameManager()
 	AddMediaFolders();
 
 	// Create the main default camera
-	mpMyCamera = mpMyEngine->CreateCamera(tle::kManual, 0.0f, 0.0f, -100.0f);
+	mpMyCamera = mpMyEngine->CreateCamera(tle::kManual, 0.0f, 0.0f, CAMERA_Z);
 
 	// create the main menu straight away
 	mpMenu = std::make_unique<CMainMenu>(mpMyEngine, mMenuState, mHorizontal, mVertical, mFullscreen);
@@ -108,8 +108,6 @@ void CGameManager::RunGame()
 				{
 					// The player has exited back to the main menu
 
-					// Delete the pause menu to make way for the main menu
-					mpMenu.reset();
 					// Delete the game level as no longer need it
 					mpLevel.reset();
 					// Recreate the main menu
@@ -154,13 +152,13 @@ bool CGameManager::CreateEngine()
 	if (!mpMyEngine)
 		return false;
 
-	GetDesktopResolution(mHorizontal, mVertical);
+	//GetDesktopResolution(mHorizontal, mVertical);
 
 	//Open the game window
 	mpMyEngine->StartWindowed(mHorizontal, mVertical);
 	mFullscreen = false;
-	/*myEngine->StartFullscreen(mHorizontal, mVertical);
-	mFullscreen = true;*/
+	//mpMyEngine->StartFullscreen(mHorizontal, mVertical);
+	//mFullscreen = true;
 
 	return true;
 }

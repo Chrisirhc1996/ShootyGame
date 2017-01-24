@@ -12,7 +12,7 @@ private:
 	// Variables //
 	tle::I3DEngine* mpMyEngine;
 
-	MenuStates mMenuState;
+	MenuStates& mMenuState;
 
 	int mMouseX = 0;
 	int mMouseY = 0;
@@ -33,7 +33,7 @@ private:
 
 public:
 	// Constructor
-	CMenuSystem(tle::I3DEngine* pMyEngine, int horiz, int vert, bool fullscreen);
+	CMenuSystem(tle::I3DEngine* pMyEngine, MenuStates& menuState, int horiz, int vert, bool fullscreen);
 	//  Destructor
 	virtual ~CMenuSystem();
 

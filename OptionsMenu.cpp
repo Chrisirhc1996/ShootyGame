@@ -9,10 +9,8 @@
 //-----------------------------------------------------------------------------
 
 COptionsMenu::COptionsMenu(tle::I3DEngine* pMyEngine, MenuStates& state, int horiz, int vert, bool fullscreen) :
-	CMenuSystem(pMyEngine, horiz, vert, fullscreen)
+	CMenuSystem(pMyEngine, state, horiz, vert, fullscreen)
 {
-	SetMenuState(state);
-
 	// create menu buttons
 
 }
