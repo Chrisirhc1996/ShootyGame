@@ -2,8 +2,8 @@
 
 #include <TL-Engine.h>  // TL-Engine include file and namespace
 #include <deque>
-#include "weapon.h"
-#include "bullet.h"
+#include "Weapon.h"
+#include "Bullets.h"
 
 using namespace tle;
 
