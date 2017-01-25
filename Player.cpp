@@ -21,6 +21,8 @@ CPlayer::CPlayer(CResourceManager* pResources) :
 
 CPlayer::~CPlayer()
 {
+	// Cleanup models
+	mpResources->GetPlayerMesh()->RemoveModel(mpPlayerModel);
 }
 
 // Movement within a restricted area (up, down, left or right)

@@ -14,8 +14,13 @@
 CLevel::CLevel(CResourceManager* pResources) :
 	mpResources{ pResources }
 {
-	// Create sprites
-	mpUIBorder = mpResources->GetEngine()->CreateSprite(BORDER, 0.0f, 0.0f, 1.0f);
+	// Create UI
+	mpUIBorder = mpResources->GetQuadMesh()->CreateModel(-4.0f, 0.0f, -95.0f);
+	mpUIBorder->RotateX(180.0f);
+	mpUIBorder->SetSkin(BORDER);
+	mpUIBorder2 = mpResources->GetQuadMesh()->CreateModel(4.0f, 0.0f, -95.0f);
+	mpUIBorder2->RotateY(180.0f);
+	mpUIBorder2->SetSkin(BORDER);
 
 	// Create player
 	mpPlayer = std::make_unique<CPlayer>(mpResources);
@@ -25,11 +30,9 @@ CLevel::CLevel(CResourceManager* pResources) :
 
 CLevel::~CLevel()
 {
-	// Cleanup models
-	mpResources->GetPlayerMesh()->RemoveModel(mpPlayer->GetModel());
-
 	// Cleanup sprites
-	mpResources->GetEngine()->RemoveSprite(mpUIBorder);
+	mpResources->GetQuadMesh()->RemoveModel(mpUIBorder);
+	mpResources->GetQuadMesh()->RemoveModel(mpUIBorder2);
 }
 
 // Play the current level

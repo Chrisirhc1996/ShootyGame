@@ -23,6 +23,6 @@ public:
 protected:
 	// Protected Methods //
 
-	tle::IMesh* GetWeaponMesh() { return mpResources->GetParticleMesh(); }
+	tle::IMesh* GetWeaponMesh() { return mpResources->GetQuadMesh(); }
 };
 
