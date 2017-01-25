@@ -3,6 +3,8 @@
 // Dependencies
 #include "Weapon.h"
 
+class CResourceManager;
+
 class CPlasmaCannon : public CWeapon
 {
 private:
@@ -11,7 +13,7 @@ private:
 
 public:
 	// Constructor
-	CPlasmaCannon(tle::IMesh* pPlasmaMesh);
+	CPlasmaCannon(CResourceManager* pResources);
 	//  Destructor
 	virtual ~CPlasmaCannon();
 

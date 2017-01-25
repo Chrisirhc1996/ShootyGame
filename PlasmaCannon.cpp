@@ -9,8 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CPlasmaCannon::CPlasmaCannon(tle::IMesh* pPlasmaMesh) :
-	CWeapon(pPlasmaMesh)
+CPlasmaCannon::CPlasmaCannon(CResourceManager* pResources) :
+	CWeapon(pResources)
 {
 }
 

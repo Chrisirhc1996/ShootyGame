@@ -14,21 +14,25 @@
 
 CGameManager::CGameManager()
 {
-	//If something went wrong, cancel the construction of the game
-	if (!CreateEngine())
-		throw;
+	//// Load the engine and meshes
+	//mpResources = CResourceManager::getInstance();
+	//mpResources->LoadResources();
+
+	mpResources = std::make_unique<CResourceManager>();
+
+	// Create the window of the size of the screen
+	CreateScreen();
 
 	// provide the search paths for any media used
 	AddMediaFolders();
 
-	// Create the main default camera
-	mpMyCamera = mpMyEngine->CreateCamera(tle::kManual, 0.0f, 0.0f, CAMERA_Z);
+	mpResources->LoadResources();
 
 	// create the main menu straight away
-	mpMenu = std::make_unique<CMainMenu>(mpMyEngine, mMenuState, mHorizontal, mVertical, mFullscreen);
+	mpMenu = std::make_unique<CMainMenu>(mpResources.get(), mMenuState, mHorizontal, mVertical, mFullscreen);
 
 	// initialise the frame timer
-	mFrameTime = mpMyEngine->Timer();
+	mFrameTime = mpResources->GetEngine()->Timer();
 }
 
 
@@ -41,31 +45,27 @@ CGameManager::~CGameManager()
 	// Cleanup the menu if not already done
 	if (mpMenu)
 		mpMenu.reset();
-
-	// Delete the 3D engine now we are finished with it
-	mpMyEngine->Delete();
-	mpMyEngine = nullptr;
 }
 
 // Main game loop, the game ends when this exits
 void CGameManager::RunGame()
 {
 	// The main game loop, repeat until engine is stopped
-	while (mpMyEngine->IsRunning())
+	while (mpResources->GetEngine()->IsRunning())
 	{
 		// Draw the scene
-		mpMyEngine->DrawScene();
+		mpResources->GetEngine()->DrawScene();
 
 		// Update the frame time
-		mFrameTime = mpMyEngine->Timer();
+		mFrameTime = mpResources->GetEngine()->Timer();
 
 		// true when the window is in the foreground and selected
-		if (mpMyEngine->IsActive())
+		if (mpResources->GetEngine()->IsActive())
 		{		
 
 			if (mGameState == GameStates::PLAYING)
 			{
-				if (mpMyEngine->KeyHit(PAUSE))
+				if (mpResources->GetEngine()->KeyHit(PAUSE))
 					PauseGame();
 
 				//--------------------------------------------------------
@@ -84,7 +84,7 @@ void CGameManager::RunGame()
 					mpMenu.reset();
 					
 					// Create the level
-					mpLevel = std::make_unique<CLevel>(mpMyEngine);
+					mpLevel = std::make_unique<CLevel>(mpResources.get());
 				}
 			}
 			else if (mGameState == GameStates::PAUSED)
@@ -104,7 +104,7 @@ void CGameManager::RunGame()
 					// Delete the game level as no longer need it
 					mpLevel.reset();
 					// Recreate the main menu
-					mpMenu = std::make_unique<CMainMenu>(mpMyEngine, mMenuState, mHorizontal, mVertical, mFullscreen);
+					mpMenu = std::make_unique<CMainMenu>(mpResources.get(), mMenuState, mHorizontal, mVertical, mFullscreen);
 				}
 			}
 		}
@@ -137,23 +137,15 @@ void CGameManager::GetDesktopResolution(int& horizontal, int& vertical)
 	vertical = desktop.bottom;
 }
 
-bool CGameManager::CreateEngine()
+void CGameManager::CreateScreen()
 {
-	// Create a 3D engine
-	mpMyEngine = tle::New3DEngine(tle::kTLX);
-
-	if (!mpMyEngine)
-		return false;
-
-	//GetDesktopResolution(mHorizontal, mVertical);
+	GetDesktopResolution(mHorizontal, mVertical);
 
 	//Open the game window
-	mpMyEngine->StartWindowed(mHorizontal, mVertical);
+	mpResources->GetEngine()->StartWindowed(mHorizontal, mVertical);
 	mFullscreen = false;
 	//mpMyEngine->StartFullscreen(mHorizontal, mVertical);
 	//mFullscreen = true;
-
-	return true;
 }
 
 void CGameManager::AddMediaFolders()
@@ -161,7 +153,7 @@ void CGameManager::AddMediaFolders()
 	// Add folders for meshes and other media
 	for (int i = 0; i < sizeof(MEDIA_FOLDERS) / sizeof(MEDIA_FOLDERS[0]); ++i)
 	{
-		mpMyEngine->AddMediaFolder(MEDIA_FOLDERS[i]);
+		mpResources->GetEngine()->AddMediaFolder(MEDIA_FOLDERS[i]);
 	}
 }
 
@@ -172,9 +164,9 @@ void CGameManager::PauseGame()
 	mGameState = GameStates::PAUSED;
 	mMenuState = MenuStates::PAUSE_MENU;
 
-	mpMenu = std::make_unique<CPauseMenu>(mpMyEngine, mMenuState, mHorizontal, mVertical, mFullscreen);
+	mpMenu = std::make_unique<CPauseMenu>(mpResources.get(), mMenuState, mHorizontal, mVertical, mFullscreen);
 
-	mpMyEngine->StopMouseCapture();	// return the mouse cursor so the menu can be operated
+	mpResources->GetEngine()->StopMouseCapture();	// return the mouse cursor so the menu can be operated
 }
 
 void CGameManager::InactiveWindowControl()

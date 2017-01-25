@@ -5,12 +5,13 @@
 #include <memory>
 #include <vector>
 #include "Globals.h"
+#include "ResourceManager.h"
 
 class CMenuSystem
 {
 private:
 	// Variables //
-	tle::I3DEngine* mpMyEngine;
+	CResourceManager* mpResources;
 
 	MenuStates& mMenuState;
 
@@ -33,7 +34,7 @@ private:
 
 public:
 	// Constructor
-	CMenuSystem(tle::I3DEngine* pMyEngine, MenuStates& menuState, int horiz, int vert, bool fullscreen);
+	CMenuSystem(CResourceManager* pResources, MenuStates& menuState, int horiz, int vert, bool fullscreen);
 	//  Destructor
 	virtual ~CMenuSystem();
 

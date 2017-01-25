@@ -4,15 +4,14 @@
 #include <TL-Engine.h>
 #include <memory>
 #include "Weapon.h"
+#include "ResourceManager.h"
 
 class CPlayer
 {
 private:
 	// Variables //
 
-	tle::I3DEngine* mpMyEngine;
-
-	tle::IMesh* mpParticleMesh;			// For bullets
+	CResourceManager* mpResources;
 
 	tle::IModel* mpPlayerModel;
 
@@ -23,7 +22,7 @@ private:
 
 public:
 	// Constructor
-	CPlayer(tle::I3DEngine* pMyEngine, tle::IMesh* pPlayerMesh, tle::IMesh* pParticleMesh);
+	CPlayer(CResourceManager* pResources);
 	//  Destructor
 	~CPlayer();
 

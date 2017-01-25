@@ -4,6 +4,7 @@
 #include <TL-Engine.h>
 #include <memory>
 #include "Player.h"
+#include "ResourceManager.h"
 
 
 class CLevel
@@ -11,19 +12,16 @@ class CLevel
 private:
 	// Variables //
 
-	tle::I3DEngine* mpMyEngine;
+	CResourceManager* mpResources;
 	
 	//tle::ISprite* mpBackdrop;
 	tle::ISprite* mpUIBorder;
-
-	tle::IMesh* mpPlayerMesh;			// The players ship
-	tle::IMesh* mpParticleMesh;			// For bullets
 
 	std::unique_ptr<CPlayer> mpPlayer;
 
 public:
 	// Constructor
-	CLevel(tle::I3DEngine* pMyEngine);
+	CLevel(CResourceManager* pResources);
 	//  Destructor	
 	~CLevel();
 

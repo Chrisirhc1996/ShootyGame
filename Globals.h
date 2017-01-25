@@ -39,7 +39,6 @@ const std::string MEDIA_FOLDERS[] = {
 //////////////
 
 const string BORDER = "blueBorder.png";
-//const string BORDER = "blueBorderQuadHD.png";
 const string SPACESHIP_MESH = "FFstarfighter.x";
 const string BULLET_SPRITE = "Bullet.png";
 const string BULLET_MESH = "particle.x";
@@ -59,31 +58,15 @@ struct MenuButton
 // x and y positions are multiplied by the window resolution
 
 
-namespace QuadHD
-{
-	// Main menu buttons
-	const MenuButton PLAY{ "playbutton100x100.png", 50.0f, 0.5f, 0.3f };
-	const MenuButton OPTIONS{ "optionbutton100x100.png", 50.0f, 0.5f, 0.5f };
-	const MenuButton QUIT{ "quitbutton100x100.png", 50.0f, 0.5f, 0.7f };
+// Main menu buttons
+const MenuButton PLAY{ "playbutton.png", 50.0f, 0.5f, 0.3f };
+const MenuButton OPTIONS{ "optionbutton.png", 50.0f, 0.5f, 0.5f };
+const MenuButton QUIT{ "quitbutton.png", 50.0f, 0.5f, 0.7f };
 
-	// Pause menu buttons
-	const MenuButton UNPAUSE{ "playbutton100x100.png", 50.0f, 0.8f, 0.9f };
-	const MenuButton PAUSE_OPTIONS{ "optionbutton100x100.png", 50.0f, 0.85f, 0.9f };
-	const MenuButton QUIT_TO_MENU{ "quitbutton100x100.png", 50.0f, 0.9f, 0.9f };
-}
-
-//namespace FullHD
-//{
-	// Main menu buttons
-	const MenuButton PLAY{ "playbutton75x75.png", 50.0f, 0.5f, 0.3f };
-	const MenuButton OPTIONS{ "optionbutton75x75.png", 50.0f, 0.5f, 0.5f };
-	const MenuButton QUIT{ "quitbutton75x75.png", 50.0f, 0.5f, 0.7f };
-
-	// Pause menu buttons
-	const MenuButton UNPAUSE{ "playbutton75x75.png", 50.0f, 0.8f, 0.9f };
-	const MenuButton PAUSE_OPTIONS{ "optionbutton75x75.png", 50.0f, 0.85f, 0.9f };
-	const MenuButton QUIT_TO_MENU{ "quitbutton75x75.png", 50.0f, 0.9f, 0.9f };
-//}
+// Pause menu buttons
+const MenuButton UNPAUSE{ "playbutton.png", 50.0f, 0.8f, 0.9f };
+const MenuButton PAUSE_OPTIONS{ "optionbutton.png", 50.0f, 0.85f, 0.9f };
+const MenuButton QUIT_TO_MENU{ "quitbutton.png", 50.0f, 0.9f, 0.9f };
 
 
 //////////////////

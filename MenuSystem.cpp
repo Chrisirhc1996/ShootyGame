@@ -10,12 +10,12 @@
 //-----------------------------------------------------------------------------
 
 
-CMenuSystem::CMenuSystem(tle::I3DEngine* pMyEngine, MenuStates& menuState, int horiz, int vert, bool fullscreen) :
-	mpMyEngine{ pMyEngine }, mMenuState{ menuState },  mHorizWindowSize { horiz }, 
+CMenuSystem::CMenuSystem(CResourceManager* pResources, MenuStates& menuState, int horiz, int vert, bool fullscreen) :
+	mpResources{ pResources }, mMenuState{ menuState },  mHorizWindowSize { horiz },
 	mVertWindowSize{ vert }, mFullscreen{ fullscreen }
 {
 	// We always want control of the mouse pointer when we have a menu open
-	mpMyEngine->StopMouseCapture();
+	mpResources->GetEngine()->StopMouseCapture();
 }
 
 
@@ -23,7 +23,7 @@ CMenuSystem::~CMenuSystem()
 {
 	for (auto& option : mMenuOptions)
 	{
-		mpMyEngine->RemoveSprite(option->button);
+		mpResources->GetEngine()->RemoveSprite(option->button);
 	}
 }
 
@@ -35,8 +35,8 @@ CMenuSystem::~CMenuSystem()
 // Update the current location of the mouse with relation to the top left of the window/fullscreen
 void CMenuSystem::UpdateMousePos()
 {
-	mMouseX = mpMyEngine->GetMouseX();
-	mMouseY = mpMyEngine->GetMouseY();
+	mMouseX = mpResources->GetEngine()->GetMouseX();
+	mMouseY = mpResources->GetEngine()->GetMouseY();
 }
 
 // Create the sprite and add the struct of details to the button vector
@@ -44,7 +44,7 @@ void CMenuSystem::CreateButton(const MenuButton & button)
 {
 	std::unique_ptr<SMenuOption> option = make_unique<SMenuOption>();
 	option->fileName = button.fileName;
-	option->button = mpMyEngine->CreateSprite(
+	option->button = mpResources->GetEngine()->CreateSprite(
 		button.fileName,
 		button.xPos * mHorizWindowSize - button.radius,
 		button.yPos * mVertWindowSize - button.radius,
@@ -84,14 +84,14 @@ void CMenuSystem::SelectMenuOption(GameStates& state)
 		if (distance < option->radius)
 		{
 			// Active menu buttons
-			if (mpMyEngine->KeyHit(SELECT))
+			if (mpResources->GetEngine()->KeyHit(SELECT))
 			{
 				// Main menu selections
 				if (mMenuState == MenuStates::MAIN_MENU)
 				{
 					if (option->fileName == PLAY.fileName)
 					{
-						mpMyEngine->StartMouseCapture();
+						mpResources->GetEngine()->StartMouseCapture();
 						state = GameStates::PLAYING;
 						break;
 					}
@@ -102,7 +102,7 @@ void CMenuSystem::SelectMenuOption(GameStates& state)
 					}
 					else if (option->fileName == QUIT.fileName)
 					{
-						mpMyEngine->Stop();
+						mpResources->GetEngine()->Stop();
 						break;
 					}
 				}
@@ -111,7 +111,7 @@ void CMenuSystem::SelectMenuOption(GameStates& state)
 				{
 					if (option->fileName == UNPAUSE.fileName)
 					{
-						mpMyEngine->StartMouseCapture();
+						mpResources->GetEngine()->StartMouseCapture();
 						state = GameStates::PLAYING;
 						break;
 					}

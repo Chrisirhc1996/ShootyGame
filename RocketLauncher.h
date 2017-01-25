@@ -3,6 +3,8 @@
 // Dependencies
 #include "Weapon.h"
 
+class CResourceManager;
+
 class CRocketLauncher : public CWeapon
 {
 private:
@@ -11,7 +13,7 @@ private:
 
 public:
 	// Constructor
-	CRocketLauncher(tle::IMesh* pRocketMesh);
+	CRocketLauncher(CResourceManager* pResources);
 	//  Destructor
 	virtual ~CRocketLauncher();
 

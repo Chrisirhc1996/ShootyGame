@@ -8,8 +8,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-COptionsMenu::COptionsMenu(tle::I3DEngine* pMyEngine, MenuStates& state, int horiz, int vert, bool fullscreen) :
-	CMenuSystem(pMyEngine, state, horiz, vert, fullscreen)
+COptionsMenu::COptionsMenu(CResourceManager* pResources, MenuStates& state, int horiz, int vert, bool fullscreen) :
+	CMenuSystem(pResources, state, horiz, vert, fullscreen)
 {
 	// create menu buttons
 
