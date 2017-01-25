@@ -25,8 +25,10 @@ private:
 	struct SMenuOption
 	{
 		string fileName;
-		tle::ISprite* button;
+		tle::IModel* button;
 		float radius;
+		float screenX;
+		float screenY;
 	};
 
 	std::vector<std::unique_ptr<SMenuOption>> mMenuOptions;	// holds all buttons currently created

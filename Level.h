@@ -14,8 +14,8 @@ private:
 
 	CResourceManager* mpResources;
 	
-	//tle::ISprite* mpBackdrop;
-	tle::ISprite* mpUIBorder;
+	tle::IModel* mpUIBorder;
+	tle::IModel* mpUIBorder2;
 
 	std::unique_ptr<CPlayer> mpPlayer;
 

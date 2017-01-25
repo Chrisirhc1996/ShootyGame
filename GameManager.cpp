@@ -65,8 +65,11 @@ void CGameManager::RunGame()
 
 			if (mGameState == GameStates::PLAYING)
 			{
-				if (mpResources->GetEngine()->KeyHit(PAUSE))
+				if (mpResources->GetEngine()->KeyHit(PAUSE) ||
+					mpResources->GetEngine()->KeyHit(ESCAPE))
+				{
 					PauseGame();
+				}
 
 				//--------------------------------------------------------
 				// GAME CODE HERE...
@@ -144,7 +147,7 @@ void CGameManager::CreateScreen()
 	//Open the game window
 	mpResources->GetEngine()->StartWindowed(mHorizontal, mVertical);
 	mFullscreen = false;
-	//mpMyEngine->StartFullscreen(mHorizontal, mVertical);
+	//mpResources->GetEngine()->StartFullscreen(mHorizontal, mVertical);
 	//mFullscreen = true;
 }
 

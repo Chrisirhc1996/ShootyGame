@@ -41,7 +41,9 @@ const std::string MEDIA_FOLDERS[] = {
 const string BORDER = "blueBorder.png";
 const string SPACESHIP_MESH = "FFstarfighter.x";
 const string BULLET_SPRITE = "Bullet.png";
-const string BULLET_MESH = "particle.x";
+const string PARTICLE_MESH = "particle.x";
+const string QUAD_MESH = "quad.x";
+
 
 //////////////
 //	Menu	//
@@ -49,24 +51,24 @@ const string BULLET_MESH = "particle.x";
 
 struct MenuButton
 {
-	string fileName;
-	float radius;
-	float xPos;
-	float yPos;
+	string fileName;	// For the skin
+	float radius;		// Multiplied by the window Y resolution
+	float xPos;			// Position in world space
+	float yPos;			// Position in world space
+	float zPos;			// Position in world space
+	float screenX;		// Position on the screen. Multiplied by the window X resolution
+	float screenY;		// Position on the screen. Multiplied by the window Y resolution
 };
 
-// x and y positions are multiplied by the window resolution
-
-
 // Main menu buttons
-const MenuButton PLAY{ "playbutton.png", 50.0f, 0.5f, 0.3f };
-const MenuButton OPTIONS{ "optionbutton.png", 50.0f, 0.5f, 0.5f };
-const MenuButton QUIT{ "quitbutton.png", 50.0f, 0.5f, 0.7f };
+const MenuButton PLAY{ "playbutton.png", 0.0293f, 0.0f, 20.0f, 0.0f, 0.5f, 0.289f };
+const MenuButton OPTIONS{ "optionbutton.png", 0.0293f, 0.0f, 0.0f, 0.0f, 0.5f, 0.5f };
+const MenuButton QUIT{ "quitbutton.png", 0.0293f, 0.0f, -20.0f, 0.0f, 0.5f, 0.712f };
 
 // Pause menu buttons
-const MenuButton UNPAUSE{ "playbutton.png", 50.0f, 0.8f, 0.9f };
-const MenuButton PAUSE_OPTIONS{ "optionbutton.png", 50.0f, 0.85f, 0.9f };
-const MenuButton QUIT_TO_MENU{ "quitbutton.png", 50.0f, 0.9f, 0.9f };
+const MenuButton UNPAUSE{ "playbutton.png", 0.0293f, 20.0f, -35.0f, 0.0f, 0.619f, 0.8725f };
+const MenuButton PAUSE_OPTIONS{ "optionbutton.png", 0.0293f, 40.0f, -35.0f, 0.0f, 0.735f, 0.8725f };
+const MenuButton QUIT_TO_MENU{ "quitbutton.png", 0.0293f, 60.0f, -35.0f, 0.0f, 0.856f, 0.8725f };
 
 
 //////////////////

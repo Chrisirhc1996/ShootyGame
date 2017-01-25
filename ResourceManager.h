@@ -11,7 +11,8 @@ private:
 	tle::ICamera* mpMyCamera;
 
 	tle::IMesh* mpPlayerMesh;			// The players ship
-	tle::IMesh* mpParticleMesh;			// For bullets, buttons etc
+	tle::IMesh* mpParticleMesh;			// Flare effects
+	tle::IMesh* mpQuadMesh;				// For buttons, bullets etc
 
 
 public:
@@ -22,7 +23,8 @@ public:
 
 	tle::I3DEngine* GetEngine() { return mpMyEngine; }
 	tle::IMesh* GetPlayerMesh() { return mpPlayerMesh; }
-	tle::IMesh* GetParticleMesh() { return mpParticleMesh; }	
+	tle::IMesh* GetParticleMesh() { return mpParticleMesh; }
+	tle::IMesh* GetQuadMesh() { return mpQuadMesh; }
 };
 
 

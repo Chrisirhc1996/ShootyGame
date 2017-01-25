@@ -37,7 +37,8 @@ void CResourceManager::LoadResources()
 
 	// Load meshes
 	mpPlayerMesh = mpMyEngine->LoadMesh(SPACESHIP_MESH);
-	mpParticleMesh = mpMyEngine->LoadMesh(BULLET_MESH);
+	mpParticleMesh = mpMyEngine->LoadMesh(PARTICLE_MESH);
+	mpQuadMesh = mpMyEngine->LoadMesh(QUAD_MESH);
 }
 
 
