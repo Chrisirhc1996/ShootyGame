@@ -29,7 +29,8 @@ enum class MenuStates
 
 const std::string MEDIA_FOLDERS[] = {
 	".\\Media",
-	".\\Media\\spaceship"
+	".\\Media\\spaceship",
+	".\\Media\\Particles"
 };
 
 
@@ -40,6 +41,8 @@ const std::string MEDIA_FOLDERS[] = {
 const string BORDER = "blueBorder.png";
 //const string BORDER = "blueBorderQuadHD.png";
 const string SPACESHIP_MESH = "FFstarfighter.x";
+const string BULLET_SPRITE = "Bullet.png";
+const string BULLET_MESH = "particle.x";
 
 //////////////
 //	Menu	//
@@ -90,6 +93,8 @@ namespace QuadHD
 const float CAMERA_Z = -100.0f;
 
 const float PLAYER_SPEED = 20.0f;
+const float PLAYER_START_X = -60.0f;
+const float PLAYER_START_Y = 0.0f;
 const float PLAYER_MIN_X = -80.0f;
 const float PLAYER_MAX_X = 30.0f;
 const float PLAYER_MIN_Y = -40.0f;

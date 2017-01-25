@@ -11,7 +11,7 @@ private:
 
 public:
 	// Constructor
-	CLasers();
+	CLasers(tle::IMesh* pLaserMesh);
 	//  Destructor
 	virtual ~CLasers();
 

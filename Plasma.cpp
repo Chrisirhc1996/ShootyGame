@@ -9,7 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CPlasma::CPlasma()
+CPlasma::CPlasma(tle::IMesh* pPlasmaMesh) :
+	CWeapon(pPlasmaMesh)
 {
 }
 

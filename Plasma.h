@@ -11,7 +11,7 @@ private:
 
 public:
 	// Constructor
-	CPlasma();
+	CPlasma(tle::IMesh* pPlasmaMesh);
 	//  Destructor
 	virtual ~CPlasma();
 

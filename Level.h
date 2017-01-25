@@ -5,21 +5,25 @@
 #include <memory>
 #include "Player.h"
 
+
 class CLevel
 {
 private:
 	// Variables //
 
 	tle::I3DEngine* mpMyEngine;
-	tle::IMesh* mpPlayerMesh;
-	std::unique_ptr<CPlayer> mpPlayer;
-
+	
 	//tle::ISprite* mpBackdrop;
 	tle::ISprite* mpUIBorder;
 
+	tle::IMesh* mpPlayerMesh;			// The players ship
+	tle::IMesh* mpParticleMesh;			// For bullets
+
+	std::unique_ptr<CPlayer> mpPlayer;
+
 public:
 	// Constructor
-	CLevel(tle::I3DEngine* pMyEngine, tle::IMesh* pPlayerMesh);
+	CLevel(tle::I3DEngine* pMyEngine);
 	//  Destructor	
 	~CLevel();
 

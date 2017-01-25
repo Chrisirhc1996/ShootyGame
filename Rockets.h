@@ -11,7 +11,7 @@ private:
 
 public:
 	// Constructor
-	CRockets();
+	CRockets(tle::IMesh* pRocketMesh);
 	//  Destructor
 	virtual ~CRockets();
 

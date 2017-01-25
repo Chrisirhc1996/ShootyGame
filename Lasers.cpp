@@ -9,7 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CLasers::CLasers()
+CLasers::CLasers(tle::IMesh* pLaserMesh) :
+	CWeapon(pLaserMesh)
 {
 }
 

@@ -3,17 +3,20 @@
 //-----------------------------------------------------------------------------
 
 #include "Player.h"
+#include "Bullets.h"
 #include "Globals.h"
 
 //-----------------------------------------------------------------------------
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CPlayer::CPlayer(tle::I3DEngine* pMyEngine, tle::IMesh* pPlayerMesh, float xPos, float yPos) :
-	mpMyEngine{ pMyEngine }, mXPos{ xPos }, mYPos{ yPos }
+CPlayer::CPlayer(tle::I3DEngine* pMyEngine, tle::IMesh* pPlayerMesh, tle::IMesh* pParticleMesh) :
+	mpMyEngine{ pMyEngine }, mpParticleMesh{ pParticleMesh }
 {
-	mpPlayerModel = pPlayerMesh->CreateModel(xPos, yPos);
+	mpPlayerModel = pPlayerMesh->CreateModel(PLAYER_START_X, PLAYER_START_Y);
 	mpPlayerModel->RotateY(90.0f);
+
+	mpWeaponSystem = std::make_unique<CBullets>(mpParticleMesh);
 }
 
 CPlayer::~CPlayer()

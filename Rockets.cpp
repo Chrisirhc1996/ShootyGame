@@ -9,7 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CRockets::CRockets()
+CRockets::CRockets(tle::IMesh* pRocketMesh) :
+	CWeapon(pRocketMesh)
 {
 }
 
