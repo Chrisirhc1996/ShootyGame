@@ -2,18 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="ShootyGame.cpp" />
-    <ClCompile Include="Bullets.cpp">
-      <Filter>Game Objects\Weapons System\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Lasers.cpp">
-      <Filter>Game Objects\Weapons System\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Plasma.cpp">
-      <Filter>Game Objects\Weapons System\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Rockets.cpp">
-      <Filter>Game Objects\Weapons System\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Weapon.cpp">
       <Filter>Game Objects\Weapons System</Filter>
     </ClCompile>
@@ -40,6 +28,18 @@
     </ClCompile>
     <ClCompile Include="Level.cpp">
       <Filter>Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Blaster.cpp">
+      <Filter>Game Objects\Weapons System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LaserGun.cpp">
+      <Filter>Game Objects\Weapons System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlasmaCannon.cpp">
+      <Filter>Game Objects\Weapons System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RocketLauncher.cpp">
+      <Filter>Game Objects\Weapons System\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -81,18 +81,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bullets.h">
-      <Filter>Game Objects\Weapons System\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Lasers.h">
-      <Filter>Game Objects\Weapons System\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Plasma.h">
-      <Filter>Game Objects\Weapons System\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Rockets.h">
-      <Filter>Game Objects\Weapons System\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Weapon.h">
       <Filter>Game Objects\Weapons System</Filter>
     </ClInclude>
@@ -122,6 +110,18 @@
     </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Blaster.h">
+      <Filter>Game Objects\Weapons System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LaserGun.h">
+      <Filter>Game Objects\Weapons System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlasmaCannon.h">
+      <Filter>Game Objects\Weapons System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RocketLauncher.h">
+      <Filter>Game Objects\Weapons System\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

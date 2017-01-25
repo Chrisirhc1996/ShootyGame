@@ -124,18 +124,18 @@ copy "C:\ProgramData\TL-Engine\3rd Party\TL-Xtreme\shader\*.*" "$(OutDir)" &gt; 
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bullets.cpp" />
+    <ClCompile Include="Blaster.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="Lasers.cpp" />
+    <ClCompile Include="LaserGun.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MenuSystem.cpp" />
     <ClCompile Include="OptionsMenu.cpp" />
     <ClCompile Include="PauseMenu.cpp" />
-    <ClCompile Include="Plasma.cpp" />
+    <ClCompile Include="PlasmaCannon.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Rockets.cpp" />
+    <ClCompile Include="RocketLauncher.cpp" />
     <ClCompile Include="ShootyGame.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
@@ -143,19 +143,19 @@ copy "C:\ProgramData\TL-Engine\3rd Party\TL-Xtreme\shader\*.*" "$(OutDir)" &gt; 
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bullets.h" />
+    <ClInclude Include="Blaster.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Globals.h" />
-    <ClInclude Include="Lasers.h" />
+    <ClInclude Include="LaserGun.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MenuSystem.h" />
     <ClInclude Include="OptionsMenu.h" />
     <ClInclude Include="PauseMenu.h" />
-    <ClInclude Include="Plasma.h" />
+    <ClInclude Include="PlasmaCannon.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Rockets.h" />
+    <ClInclude Include="RocketLauncher.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

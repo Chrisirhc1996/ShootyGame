@@ -1,8 +1,9 @@
 #pragma once
 
-#include <TL-Engine.h>
-
 // Dependencies
+#include <TL-Engine.h>
+#include <memory>
+#include "Weapon.h"
 
 class CPlayer
 {
@@ -10,17 +11,19 @@ private:
 	// Variables //
 
 	tle::I3DEngine* mpMyEngine;
+
+	tle::IMesh* mpParticleMesh;			// For bullets
+
 	tle::IModel* mpPlayerModel;
-	
-	float mXPos;		// X position on screen
-	float mYPos;		// Y position on screen
+
+	std::unique_ptr<CWeapon> mpWeaponSystem;
 	
 	int mHealth;		// How much health remaining this life
 	int mLives;			// How many lives the player has left
 
 public:
 	// Constructor
-	CPlayer(tle::I3DEngine* pMyEngine, tle::IMesh* pPlayerMesh, float xPos, float yPos);
+	CPlayer(tle::I3DEngine* pMyEngine, tle::IMesh* pPlayerMesh, tle::IMesh* pParticleMesh);
 	//  Destructor
 	~CPlayer();
 
@@ -29,13 +32,14 @@ public:
 
 	
 	// Getters
-	float GetXPos() const { return mXPos; }
-	float GetYPos() const { return mYPos; }
+	float GetXPos() const { return mpPlayerModel->GetX(); }
+	float GetYPos() const { return mpPlayerModel->GetY(); }
 	tle::IModel* GetModel() { return mpPlayerModel; }
+	CWeapon* GetWeaponSystem() { return mpWeaponSystem.get(); }
 	
 	// Setters
-	void SetXPos(float xPos) { mXPos = xPos; }
-	void SetYPos(float yPos) { mYPos = yPos; }
+	void SetXPos(float xPos) { mpPlayerModel->SetX(xPos); }
+	void SetYPos(float yPos) { mpPlayerModel->SetY(yPos); }
 
 private:
 	// Private Methods //

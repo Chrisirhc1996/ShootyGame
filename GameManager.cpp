@@ -27,9 +27,6 @@ CGameManager::CGameManager()
 	// create the main menu straight away
 	mpMenu = std::make_unique<CMainMenu>(mpMyEngine, mMenuState, mHorizontal, mVertical, mFullscreen);
 
-	// Create meshes
-	mpPlayerMesh = mpMyEngine->LoadMesh(SPACESHIP_MESH);
-
 	// initialise the frame timer
 	mFrameTime = mpMyEngine->Timer();
 }
@@ -44,10 +41,6 @@ CGameManager::~CGameManager()
 	// Cleanup the menu if not already done
 	if (mpMenu)
 		mpMenu.reset();
-
-	// Cleanup the meshes
-	mpMyEngine->RemoveMesh(mpPlayerMesh);
-	mpPlayerMesh = nullptr;
 
 	// Delete the 3D engine now we are finished with it
 	mpMyEngine->Delete();
@@ -91,7 +84,7 @@ void CGameManager::RunGame()
 					mpMenu.reset();
 					
 					// Create the level
-					mpLevel = std::make_unique<CLevel>(mpMyEngine, mpPlayerMesh);
+					mpLevel = std::make_unique<CLevel>(mpMyEngine);
 				}
 			}
 			else if (mGameState == GameStates::PAUSED)
