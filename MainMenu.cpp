@@ -8,8 +8,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CMainMenu::CMainMenu(tle::I3DEngine* pMyEngine, MenuStates& state, int horiz, int vert, bool fullscreen) :
-	CMenuSystem(pMyEngine, state, horiz, vert, fullscreen)
+CMainMenu::CMainMenu(CResourceManager* pResources, MenuStates& state, int horiz, int vert, bool fullscreen) :
+	CMenuSystem(pResources, state, horiz, vert, fullscreen)
 {
 	// create menu buttons
 	CreateButton(PLAY);

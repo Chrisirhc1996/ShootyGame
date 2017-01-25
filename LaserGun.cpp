@@ -9,8 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CLaserGun::CLaserGun(tle::IMesh* pLaserMesh) :
-	CWeapon(pLaserMesh)
+CLaserGun::CLaserGun(CResourceManager* pResources) :
+	CWeapon(pResources)
 {
 }
 

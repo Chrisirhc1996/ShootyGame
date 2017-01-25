@@ -2,17 +2,18 @@
 
 // Dependencies
 #include <TL-Engine.h>
+#include "ResourceManager.h"
 
 class CWeapon
 {
 private:
 	// Variables //
 
-	tle::IMesh* mpWeaponMesh;
+	CResourceManager* mpResources;
 
 public:
 	// Constructor
-	CWeapon(tle::IMesh* pWeaponMesh);
+	CWeapon(CResourceManager* pResources);
 	//  Destructor
 	virtual ~CWeapon();
 
@@ -22,6 +23,6 @@ public:
 protected:
 	// Protected Methods //
 
-	tle::IMesh* GetWeaponMesh() { return mpWeaponMesh; }
+	tle::IMesh* GetWeaponMesh() { return mpResources->GetParticleMesh(); }
 };
 

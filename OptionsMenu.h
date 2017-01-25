@@ -3,10 +3,12 @@
 // Dependencies
 #include "MenuSystem.h"
 
+class CResourceManager;
+
 class COptionsMenu : public CMenuSystem
 {
 public:
-	COptionsMenu(tle::I3DEngine* pMyEngine, MenuStates& state, int horiz, int vert, bool fullscreen);
+	COptionsMenu(CResourceManager* pResources, MenuStates& state, int horiz, int vert, bool fullscreen);
 	virtual ~COptionsMenu();
 
 	// do cursor collision detection on the buttons

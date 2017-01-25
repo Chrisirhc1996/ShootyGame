@@ -9,8 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CWeapon::CWeapon(tle::IMesh* pWeaponMesh) :
-	mpWeaponMesh{ pWeaponMesh }
+CWeapon::CWeapon(CResourceManager* pResources) :
+	mpResources{ pResources }
 {
 }
 

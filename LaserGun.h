@@ -3,6 +3,8 @@
 // Dependencies
 #include "Weapon.h"
 
+class CResourceManager;
+
 class CLaserGun : public CWeapon
 {
 private:
@@ -11,7 +13,7 @@ private:
 
 public:
 	// Constructor
-	CLaserGun(tle::IMesh* pLaserMesh);
+	CLaserGun(CResourceManager* pResources);
 	//  Destructor
 	virtual ~CLaserGun();
 

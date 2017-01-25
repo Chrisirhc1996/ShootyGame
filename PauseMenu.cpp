@@ -8,8 +8,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CPauseMenu::CPauseMenu(tle::I3DEngine* pMyEngine, MenuStates& state, int horiz, int vert, bool fullscreen) :
-	CMenuSystem(pMyEngine, state, horiz, vert, fullscreen)
+CPauseMenu::CPauseMenu(CResourceManager* pResources, MenuStates& state, int horiz, int vert, bool fullscreen) :
+	CMenuSystem(pResources, state, horiz, vert, fullscreen)
 {
 	// create menu buttons
 	CreateButton(UNPAUSE);

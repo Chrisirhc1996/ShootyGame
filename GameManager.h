@@ -3,6 +3,7 @@
 // Dependencies
 #include <TL-Engine.h>	// TL-Engine include file and namespace
 #include <memory>
+#include "ResourceManager.h"
 #include "MenuSystem.h"
 #include "Level.h"
 #include "Globals.h"
@@ -11,8 +12,6 @@ class CGameManager
 {
 private:
 	// Variables //
-
-	tle::I3DEngine* mpMyEngine;
 	tle::ICamera* mpMyCamera;
 
 	int mHorizontal = 1920;				// Desktop X resolution
@@ -24,6 +23,7 @@ private:
 
 	GameStates mGameState = GameStates::MENU;			// Overall state of the game, i.e. playing, paused or in the menu	
 	MenuStates mMenuState = MenuStates::MAIN_MENU;		// States which menu we are in
+	std::unique_ptr<CResourceManager> mpResources;		// Handle for the resource manager
 	std::unique_ptr<CMenuSystem> mpMenu;				// Handle for the menu system
 	std::unique_ptr<CLevel> mpLevel;					// Handle for the game level
 
@@ -41,7 +41,7 @@ private:
 
 	// Get the horizontal and vertical screen sizes in pixel
 	void GetDesktopResolution(int& horizontal, int& vertical);
-	bool CreateEngine();
+	void CreateScreen();
 	void AddMediaFolders();
 	// Bring up the pause menu
 	void PauseGame();

@@ -9,8 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CRocketLauncher::CRocketLauncher(tle::IMesh* pRocketMesh) :
-	CWeapon(pRocketMesh)
+CRocketLauncher::CRocketLauncher(CResourceManager* pResources) :
+	CWeapon(pResources)
 {
 }
 

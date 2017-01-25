@@ -135,6 +135,7 @@ copy "C:\ProgramData\TL-Engine\3rd Party\TL-Xtreme\shader\*.*" "$(OutDir)" &gt; 
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="PlasmaCannon.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="RocketLauncher.cpp" />
     <ClCompile Include="ShootyGame.cpp" />
     <ClCompile Include="Weapon.cpp" />
@@ -155,6 +156,7 @@ copy "C:\ProgramData\TL-Engine\3rd Party\TL-Xtreme\shader\*.*" "$(OutDir)" &gt; 
     <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="PlasmaCannon.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="RocketLauncher.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>

@@ -9,8 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CBlaster::CBlaster(tle::IMesh* pBulletMesh) :
-	CWeapon(pBulletMesh)
+CBlaster::CBlaster(CResourceManager* pResources) :
+	CWeapon(pResources)
 {
 	mLifetime = 4.0f;
 	mSpeed = 60.0f;

@@ -7,6 +7,8 @@
 #include "Weapon.h"
 #include "Globals.h"
 
+class CResourceManager;
+
 class CBlaster : public CWeapon
 {
 private:
@@ -37,7 +39,7 @@ private:
 
 public:
 	// Constructor
-	CBlaster(tle::IMesh* pBulletMesh);
+	CBlaster(CResourceManager* pResources);
 	//  Destructor
 	virtual ~CBlaster();
 

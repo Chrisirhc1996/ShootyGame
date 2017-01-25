@@ -8,9 +8,6 @@
     <ClCompile Include="MenuSystem.cpp">
       <Filter>Menu System</Filter>
     </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Game Core</Filter>
-    </ClCompile>
     <ClCompile Include="MainMenu.cpp">
       <Filter>Menu System\Source Files</Filter>
     </ClCompile>
@@ -40,6 +37,12 @@
     </ClCompile>
     <ClCompile Include="RocketLauncher.cpp">
       <Filter>Game Objects\Weapons System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Game Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Game Core\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +82,12 @@
     <Filter Include="Levels">
       <UniqueIdentifier>{c96cc377-e4b1-49b7-8985-ff8a42eccea5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Core\Header Files">
+      <UniqueIdentifier>{dd0ff561-c0c5-4284-9d41-b76672e35870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Core\Source Files">
+      <UniqueIdentifier>{1f54304c-237f-4903-9962-4cf3114dd2b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Weapon.h">
@@ -86,9 +95,6 @@
     </ClInclude>
     <ClInclude Include="MenuSystem.h">
       <Filter>Menu System</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Game Core</Filter>
     </ClInclude>
     <ClInclude Include="Globals.h">
       <Filter>Game Core</Filter>
@@ -122,6 +128,12 @@
     </ClInclude>
     <ClInclude Include="RocketLauncher.h">
       <Filter>Game Objects\Weapons System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Game Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Game Core\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
