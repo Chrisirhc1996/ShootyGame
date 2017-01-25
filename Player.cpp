@@ -3,7 +3,7 @@
 //-----------------------------------------------------------------------------
 
 #include "Player.h"
-#include "Bullets.h"
+#include "Blaster.h"
 #include "Globals.h"
 
 //-----------------------------------------------------------------------------
@@ -16,7 +16,7 @@ CPlayer::CPlayer(tle::I3DEngine* pMyEngine, tle::IMesh* pPlayerMesh, tle::IMesh*
 	mpPlayerModel = pPlayerMesh->CreateModel(PLAYER_START_X, PLAYER_START_Y);
 	mpPlayerModel->RotateY(90.0f);
 
-	mpWeaponSystem = std::make_unique<CBullets>(mpParticleMesh);
+	mpWeaponSystem = std::make_unique<CBlaster>(mpParticleMesh);
 }
 
 CPlayer::~CPlayer()

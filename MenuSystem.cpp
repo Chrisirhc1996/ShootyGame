@@ -91,6 +91,7 @@ void CMenuSystem::SelectMenuOption(GameStates& state)
 				{
 					if (option->fileName == PLAY.fileName)
 					{
+						mpMyEngine->StartMouseCapture();
 						state = GameStates::PLAYING;
 						break;
 					}
@@ -110,6 +111,7 @@ void CMenuSystem::SelectMenuOption(GameStates& state)
 				{
 					if (option->fileName == UNPAUSE.fileName)
 					{
+						mpMyEngine->StartMouseCapture();
 						state = GameStates::PLAYING;
 						break;
 					}
