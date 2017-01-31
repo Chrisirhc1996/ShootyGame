@@ -13,7 +13,7 @@ private:
 
 public:
 	// Constructor
-	CLaserGun(CResourceManager* pResources);
+	CLaserGun(CResourceManager* pResources, bool enemyShooting = true);
 	//  Destructor
 	virtual ~CLaserGun();
 

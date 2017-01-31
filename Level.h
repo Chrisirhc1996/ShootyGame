@@ -3,9 +3,12 @@
 // Dependencies
 #include <TL-Engine.h>
 #include <memory>
-#include "Player.h"
-#include "ResourceManager.h"
+#include <list>
 
+class CResourceManager;
+class CPlayer;
+class CEnemy;
+class CAmmo;
 
 class CLevel
 {
@@ -18,6 +21,8 @@ private:
 	tle::IModel* mpUIBorder2;
 
 	std::unique_ptr<CPlayer> mpPlayer;
+	std::list<std::unique_ptr<CEnemy>> mEnemies;
+	//std::list<std::unique_ptr<CAmmo>> mAmmo;		// All bullets, laser beams etc, on the screen
 
 public:
 	// Constructor

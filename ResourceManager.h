@@ -22,6 +22,7 @@ public:
 	void LoadResources();
 
 	tle::I3DEngine* GetEngine() { return mpMyEngine; }
+	tle::ICamera* GetCamera() { return mpMyCamera; }
 	tle::IMesh* GetPlayerMesh() { return mpPlayerMesh; }
 	tle::IMesh* GetParticleMesh() { return mpParticleMesh; }
 	tle::IMesh* GetQuadMesh() { return mpQuadMesh; }

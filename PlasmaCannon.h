@@ -13,7 +13,7 @@ private:
 
 public:
 	// Constructor
-	CPlasmaCannon(CResourceManager* pResources);
+	CPlasmaCannon(CResourceManager* pResources, bool enemyShooting = true);
 	//  Destructor
 	virtual ~CPlasmaCannon();
 

@@ -1,18 +1,24 @@
 #pragma once
 
 // Dependencies
+#include "Entity.h"
 
-class CEnemy
+#include <TL-Engine.h>
+#include <memory>
+
+class CResourceManager;
+
+
+class CEnemy : public CEntity
 {
 private:
 	// Variables //
 
-
 public:
 	// Constructor
-	CEnemy();
+	CEnemy(CResourceManager* pResources);
 	//  Destructor
-	~CEnemy();
+	virtual ~CEnemy();
 
 private:
 	// Private Methods //

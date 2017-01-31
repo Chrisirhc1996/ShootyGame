@@ -3,18 +3,21 @@
 //-----------------------------------------------------------------------------
 
 #include "Blaster.h"
-
+#include "Enemy.h"
 
 //-----------------------------------------------------------------------------
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CBlaster::CBlaster(CResourceManager* pResources) :
-	CWeapon(pResources)
+CBlaster::CBlaster(CResourceManager* pResources, bool enemyShooting) :
+	CWeapon(pResources, enemyShooting)
 {
 	mLifetime = 4.0f;
-	mSpeed = 60.0f;
 	mRateOfFire = 0.2f;
+	if (enemyShooting)
+		mSpeed = -60.0f;
+	else
+		mSpeed = 60.0f;
 }
 
 
@@ -59,6 +62,20 @@ void CBlaster::ShootWeapon(float xPos, float yPos)
 		mFiringTimer = 0.0f;
 		CreateBullet(xPos, yPos);
 	}
+}
+
+bool CBlaster::CollisionCheck(CEnemy* enemy)
+{
+	for (auto& bullet : bullets)
+	{
+		if (fabs(bullet->mpBulletModel->GetX() - enemy->GetXPos()) < 5.0f/*half model length*/ &&
+			fabs(bullet->mpBulletModel->GetY() - enemy->GetYPos()) < 2.0f/*half model height*/)
+		{
+			// Theres been a collision!
+			return true;
+		}
+	}
+	return false;
 }
 
 //-----------------------------------------------------------------------------

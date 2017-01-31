@@ -6,6 +6,7 @@
 #include <vector>
 #include "Globals.h"
 #include "ResourceManager.h"
+#include "Support.h"
 
 class CMenuSystem
 {
@@ -22,13 +23,13 @@ private:
 	int mVertWindowSize;
 	bool mFullscreen;
 
+	float nearClip = 1.0f;
+
 	struct SMenuOption
 	{
 		string fileName;
 		tle::IModel* button;
 		float radius;
-		float screenX;
-		float screenY;
 	};
 
 	std::vector<std::unique_ptr<SMenuOption>> mMenuOptions;	// holds all buttons currently created
@@ -50,6 +51,8 @@ protected:
 	void UpdateMousePos();
 	// Create the sprite and add the struct of details to the button vector
 	void CreateButton(const MenuButton& button);
+	// Return the world point under the mouse with the given z-distance from the camera
+	CVector3 PointFromMouse(float cameraZDist);;
 	// Do cursor collision detection on the buttons
 	void SelectMenuOption(GameStates& state);
 
@@ -59,4 +62,3 @@ protected:
 	// Setters
 	void SetMenuState(MenuStates& state) { mMenuState = state; }
 };
-

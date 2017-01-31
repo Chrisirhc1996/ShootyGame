@@ -1,44 +1,30 @@
 #pragma once
 
 // Dependencies
+#include "Entity.h"
+
 #include <TL-Engine.h>
 #include <memory>
-#include "Weapon.h"
-#include "ResourceManager.h"
 
-class CPlayer
+class CResourceManager;
+
+
+class CPlayer : public CEntity
 {
 private:
 	// Variables //
 
-	CResourceManager* mpResources;
-
-	tle::IModel* mpPlayerModel;
-
-	std::unique_ptr<CWeapon> mpWeaponSystem;
-	
-	int mHealth;		// How much health remaining this life
 	int mLives;			// How many lives the player has left
 
 public:
 	// Constructor
 	CPlayer(CResourceManager* pResources);
 	//  Destructor
-	~CPlayer();
+	virtual ~CPlayer();
 
 	// Movement within a restricted area (up, down, left or right)
-	void MovePlayer(float frameTime);
+	virtual void Move(float frameTime);
 
-	
-	// Getters
-	float GetXPos() const { return mpPlayerModel->GetX(); }
-	float GetYPos() const { return mpPlayerModel->GetY(); }
-	tle::IModel* GetModel() { return mpPlayerModel; }
-	CWeapon* GetWeaponSystem() { return mpWeaponSystem.get(); }
-	
-	// Setters
-	void SetXPos(float xPos) { mpPlayerModel->SetX(xPos); }
-	void SetYPos(float yPos) { mpPlayerModel->SetY(yPos); }
 
 private:
 	// Private Methods //

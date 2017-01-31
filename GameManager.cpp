@@ -3,10 +3,14 @@
 //-----------------------------------------------------------------------------
 
 #include "GameManager.h"
+
+#include "ResourceManager.h"
+#include "MenuSystem.h"
+#include "Level.h"
 #include "MainMenu.h"
 #include "PauseMenu.h"
 #include "wtypes.h"
-#include "Globals.h"
+
 
 //-----------------------------------------------------------------------------
 //---- Public Methods ---------------------------------------------------------

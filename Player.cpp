@@ -3,53 +3,54 @@
 //-----------------------------------------------------------------------------
 
 #include "Player.h"
-#include "Blaster.h"
+
 #include "Globals.h"
+#include "ResourceManager.h"
+#include "Weapon.h"
+#include "Blaster.h"
 
 //-----------------------------------------------------------------------------
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
 CPlayer::CPlayer(CResourceManager* pResources) :
-	mpResources{ pResources }
+	CEntity{ pResources }
 {
-	mpPlayerModel = mpResources->GetPlayerMesh()->CreateModel(PLAYER_START_X, PLAYER_START_Y);
-	mpPlayerModel->RotateY(90.0f);
-
-	mpWeaponSystem = std::make_unique<CBlaster>(mpResources);
+	SetModel(GetResources()->GetPlayerMesh()->CreateModel(PLAYER_START_X, PLAYER_START_Y));
+	GetModel()->RotateY(90.0f);
+	std::unique_ptr<CWeapon> weapon = std::make_unique<CBlaster>(GetResources(), false);
+	SetWeaponSystem(weapon);
 }
 
 CPlayer::~CPlayer()
 {
-	// Cleanup models
-	mpResources->GetPlayerMesh()->RemoveModel(mpPlayerModel);
 }
 
 // Movement within a restricted area (up, down, left or right)
-void CPlayer::MovePlayer(float frameTime)
+void CPlayer::Move(float frameTime)
 {
 	// Move up or down
-	if (mpResources->GetEngine()->KeyHeld(UP))
+	if (GetResources()->GetEngine()->KeyHeld(UP))
 	{
-		if (mpPlayerModel->GetY() < PLAYER_MAX_Y)
-			mpPlayerModel->MoveY(PLAYER_SPEED * frameTime);
+		if (GetYPos() < PLAYER_MAX_Y)
+			GetModel()->MoveY(PLAYER_SPEED * frameTime);
 	}
-	else if (mpResources->GetEngine()->KeyHeld(DOWN))
+	else if (GetResources()->GetEngine()->KeyHeld(DOWN))
 	{
-		if (mpPlayerModel->GetY() > PLAYER_MIN_Y)
-			mpPlayerModel->MoveY(-PLAYER_SPEED * frameTime);
+		if (GetYPos() > PLAYER_MIN_Y)
+			GetModel()->MoveY(-PLAYER_SPEED * frameTime);
 	}
 
 	// Move left or right
-	if (mpResources->GetEngine()->KeyHeld(LEFT))
+	if (GetResources()->GetEngine()->KeyHeld(LEFT))
 	{
-		if (mpPlayerModel->GetX() > PLAYER_MIN_X)
-			mpPlayerModel->MoveX(-PLAYER_SPEED * frameTime);
+		if (GetXPos() > PLAYER_MIN_X)
+			GetModel()->MoveX(-PLAYER_SPEED * frameTime);
 	}
-	else if (mpResources->GetEngine()->KeyHeld(RIGHT))
+	else if (GetResources()->GetEngine()->KeyHeld(RIGHT))
 	{
-		if (mpPlayerModel->GetX() < PLAYER_MAX_X)
-			mpPlayerModel->MoveX(PLAYER_SPEED * frameTime);
+		if (GetXPos() < PLAYER_MAX_X)
+			GetModel()->MoveX(PLAYER_SPEED * frameTime);
 	}
 }
 

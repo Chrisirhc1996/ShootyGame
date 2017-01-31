@@ -1,13 +1,15 @@
 #pragma once
 
 // Dependencies
+#include "Weapon.h"
+
 #include <TL-Engine.h>
 #include <deque>
 #include <memory>
-#include "Weapon.h"
 #include "Globals.h"
 
 class CResourceManager;
+class CEnemy;
 
 class CBlaster : public CWeapon
 {
@@ -39,14 +41,16 @@ private:
 
 public:
 	// Constructor
-	CBlaster(CResourceManager* pResources);
+	CBlaster(CResourceManager* pResources, bool enemyShooting = true);
 	//  Destructor
 	virtual ~CBlaster();
 
 	// Moves projectiles and age them
 	virtual void MoveWeaponParticles(float frameTime);
-
+	// If weapon not on cooldown, fire
 	virtual void ShootWeapon(float xPos, float yPos);
+	// Check collisions
+	virtual bool CollisionCheck(CEnemy* enemy);
 
 	// Getters
 	float GetLifetime() const { return mLifetime; }

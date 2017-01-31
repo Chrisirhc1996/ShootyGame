@@ -13,7 +13,7 @@ private:
 
 public:
 	// Constructor
-	CRocketLauncher(CResourceManager* pResources);
+	CRocketLauncher(CResourceManager* pResources, bool enemyShooting = true);
 	//  Destructor
 	virtual ~CRocketLauncher();
 

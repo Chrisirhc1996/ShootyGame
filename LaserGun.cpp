@@ -9,8 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CLaserGun::CLaserGun(CResourceManager* pResources) :
-	CWeapon(pResources)
+CLaserGun::CLaserGun(CResourceManager* pResources, bool enemyShooting) :
+	CWeapon(pResources, enemyShooting)
 {
 }
 

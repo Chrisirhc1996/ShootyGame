@@ -9,8 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CWeapon::CWeapon(CResourceManager* pResources) :
-	mpResources{ pResources }
+CWeapon::CWeapon(CResourceManager* pResources, bool enemyWeapon) :
+	mpResources{ pResources }, mEnemyWeapon{ enemyWeapon }
 {
 }
 
