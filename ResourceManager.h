@@ -13,7 +13,8 @@ private:
 	tle::IMesh* mpPlayerMesh;			// The players ship
 	tle::IMesh* mpParticleMesh;			// Flare effects
 	tle::IMesh* mpQuadMesh;				// For buttons, bullets etc
-
+	tle::IMesh* mpCubeMesh;				// For backdrop etc
+	tle::IMesh* mpDummyMesh;			// To act as an empty parent object
 
 public:
 	CResourceManager();
@@ -26,6 +27,8 @@ public:
 	tle::IMesh* GetPlayerMesh() { return mpPlayerMesh; }
 	tle::IMesh* GetParticleMesh() { return mpParticleMesh; }
 	tle::IMesh* GetQuadMesh() { return mpQuadMesh; }
+	tle::IMesh* GetCubeMesh() { return mpCubeMesh; }
+	tle::IMesh* GetDummyMesh() { return mpDummyMesh; }
 };
 
 

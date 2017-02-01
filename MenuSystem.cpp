@@ -56,8 +56,21 @@ void CMenuSystem::CreateButton(const MenuButton & button)
 // Return the world point under the mouse with the given z-distance from the camera
 CVector3 CMenuSystem::PointFromMouse(float cameraZDist)
 {
-	CVector3 mousePoint = WorldPointFromPixel(mpResources->GetEngine()->GetMouseX(),
-		mpResources->GetEngine()->GetMouseY(), mpResources->GetCamera(), nearClip, mpResources->GetEngine());
+	int heightAdjustment = 0;
+	int widthAdjustment = 0;
+	if (mFullscreen)
+	{
+		// Fix the offset created when removing the window top bar
+		heightAdjustment = (mVertWindowSize / 1000) * 30;
+		widthAdjustment = mVertWindowSize / 175;
+	}
+
+	CVector3 mousePoint = WorldPointFromPixel(
+		mpResources->GetEngine()->GetMouseX() + widthAdjustment,
+		mpResources->GetEngine()->GetMouseY() + heightAdjustment, 
+		mpResources->GetCamera(), 
+		nearClip, 
+		mpResources->GetEngine());
 	CVector3 mouseRay = NormaliseVector(mousePoint - CameraPosition(mpResources->GetCamera()));
 	float rayDistance = cameraZDist / Dot(mouseRay, CameraFacing(mpResources->GetCamera()));
 	return CameraPosition(mpResources->GetCamera()) + mouseRay * rayDistance;
@@ -69,14 +82,6 @@ void CMenuSystem::SelectMenuOption(GameStates& state)
 	// Active menu buttons
 	if (mpResources->GetEngine()->KeyHit(SELECT))
 	{
-		int heightAdjustment = 0;
-		int widthAdjustment = 0;
-		if (mFullscreen)
-		{
-			heightAdjustment = (mVertWindowSize / 1000) * 30;
-			widthAdjustment = mVertWindowSize / 200;
-		}
-
 		CVector3 worldPos = PointFromMouse(-CAMERA_Z);
 
 		// Go through each menu option

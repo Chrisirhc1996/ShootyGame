@@ -130,6 +130,7 @@ copy "C:\ProgramData\TL-Engine\3rd Party\TL-Xtreme\shader\*.*" "$(OutDir)" &gt; 
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="LaserBeam.cpp" />
     <ClCompile Include="LaserGun.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -155,6 +156,7 @@ copy "C:\ProgramData\TL-Engine\3rd Party\TL-Xtreme\shader\*.*" "$(OutDir)" &gt; 
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="LaserBeam.h" />
     <ClInclude Include="LaserGun.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainMenu.h" />

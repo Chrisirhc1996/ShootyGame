@@ -38,11 +38,16 @@ const std::string MEDIA_FOLDERS[] = {
 //	Media	//
 //////////////
 
-const string BORDER = "blueBorder.png";
 const string SPACESHIP_MESH = "FFstarfighter.x";
-const string BULLET_SPRITE = "Bullet.png";
 const string PARTICLE_MESH = "particle.x";
 const string QUAD_MESH = "quad.x";
+const string CUBE_MESH = "Cube.x";
+const string DUMMY_MESH = "Dummy.x";
+
+const string BACKGROUND_1 = "tileable-nebula.png";
+const string BACKGROUND_2 = "tileable-classic-nebula.jpg";
+const string BULLET_SPRITE = "Bullet.png";
+const string LASER_SPRITE = "beam.jpg";
 
 
 //////////////
@@ -77,6 +82,12 @@ const float PI = 3.141592741f;
 
 const float CAMERA_Z = -100.0f;
 
+const int BACKGROUND_COUNT = 20;				// How many times does the background tile
+const int CUBE_SIZE = 10;						// Used to calculate the spacing between background tiles
+const float BACKGROUND_Z = 10.0f;
+const float BACKGROUND_SCALE = 12.0f;
+const float BACKGROUND_SCROLL_SPEED = 15.0f;
+
 const float PLAYER_SPEED = 20.0f;
 const float PLAYER_START_X = -60.0f;
 const float PLAYER_START_Y = 0.0f;
@@ -84,6 +95,9 @@ const float PLAYER_MIN_X = -80.0f;
 const float PLAYER_MAX_X = 30.0f;
 const float PLAYER_MIN_Y = -40.0f;
 const float PLAYER_MAX_Y = 40.0f;
+
+const float LASER_Z = 5.0f;						// Z position to line up with the ship model
+const float LASER_X_OFFSET = 0.6f;				// Multiplied by distance, sets the position in front of the ship
 
 //////////////////
 // Key bindings //

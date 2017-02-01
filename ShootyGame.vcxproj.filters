@@ -51,10 +51,13 @@
       <Filter>Game Objects\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Ammo.cpp">
-      <Filter>Game Objects\Entities\Ammo</Filter>
+      <Filter>Game Objects\Ammo</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
-      <Filter>Game Objects\Entities\Ammo</Filter>
+      <Filter>Game Objects\Ammo</Filter>
+    </ClCompile>
+    <ClCompile Include="LaserBeam.cpp">
+      <Filter>Game Objects\Ammo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -97,7 +100,7 @@
     <Filter Include="Game Objects\Entities\Player">
       <UniqueIdentifier>{9ae98151-ca1b-4dcf-908b-1d5e07c4062b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Objects\Entities\Ammo">
+    <Filter Include="Game Objects\Ammo">
       <UniqueIdentifier>{fcfcc41f-a59a-4a71-9414-fde383b707ce}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -154,10 +157,13 @@
       <Filter>Game Objects\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Ammo.h">
-      <Filter>Game Objects\Entities\Ammo</Filter>
+      <Filter>Game Objects\Ammo</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>Game Objects\Entities\Ammo</Filter>
+      <Filter>Game Objects\Ammo</Filter>
+    </ClInclude>
+    <ClInclude Include="LaserBeam.h">
+      <Filter>Game Objects\Ammo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

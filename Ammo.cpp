@@ -9,8 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CAmmo::CAmmo(CResourceManager* pResources, bool isEnemyWeapon) :
-	mpResources{ pResources }, mFromEnemyWeapon{ isEnemyWeapon }
+CAmmo::CAmmo(CResourceManager* pResources, bool isEnemyWeapon, float lifetime) :
+	mpResources{ pResources }, mFromEnemyWeapon{ isEnemyWeapon }, mLifetimeLeft{ lifetime }
 {
 }
 

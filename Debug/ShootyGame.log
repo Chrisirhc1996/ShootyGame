@@ -1,13 +1,5 @@
-﻿  Ammo.cpp
-  Generating Code...
-  Compiling...
-  Player.cpp
+﻿  Player.cpp
   Level.cpp
-  Enemy.cpp
-  Bullet.cpp
-  Blaster.cpp
   Generating Code...
-  Skipping... (no relevant changes detected)
-  GameManager.cpp
   ShootyGame.vcxproj -> E:\Repos\ShootyGame\\ShootyGameDebug.exe
   ShootyGame.vcxproj -> E:\Repos\ShootyGame\\ShootyGame.pdb (Full PDB)
