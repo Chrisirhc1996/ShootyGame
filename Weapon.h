@@ -22,14 +22,14 @@ public:
 	//  Destructor
 	virtual ~CWeapon();
 
-	virtual void ShootWeapon(float xPos, float yPos) = 0;
-	virtual void UpdateTimer(float frameTime) = 0;
+	inline virtual void ShootWeapon(float xPos, float yPos) = 0;
+	inline virtual void UpdateTimer(float frameTime) {};
 
 	// Getters
-	bool IsEnemyWeapon() const { return mEnemyWeapon; }
+	inline bool IsEnemyWeapon() const { return mEnemyWeapon; }
 
 protected:
 	// Protected Methods //
-	CResourceManager* GetResources() { return mpResources; }
+	inline CResourceManager* GetResources() { return mpResources; }
 };
 

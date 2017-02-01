@@ -7,7 +7,6 @@
 class CBullet : public CAmmo
 {
 private:
-	float mLifetimeLeft;
 	float mSpeed;
 
 public:
@@ -19,6 +18,5 @@ public:
 	// Getters
 	
 	// Setters
-	virtual void SetLifetime(float life) { mLifetimeLeft = life; }
-	virtual void SetSpeed(float speed) { mSpeed = speed; }
+	inline virtual void SetSpeed(float speed) { mSpeed = speed; }
 };

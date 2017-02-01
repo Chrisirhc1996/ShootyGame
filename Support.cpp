@@ -91,3 +91,39 @@ CVector3 WorldPointFromPixel( int x, int y, tle::ICamera* camera, float nearClip
 
 	return worldPoint;
 }
+
+
+//------------------------------------------
+// Line intersection
+//------------------------------------------
+
+bool LineCollision(const CPoint& A1, const CPoint& A2,
+	const CPoint& B1, const CPoint& B2)
+{
+	CPoint a(A2 - A1);
+	CPoint b(B2 - B1);
+
+	double f = PerpDot(a, b);
+	if (!f)      // lines are parallel
+		return false;
+
+	CPoint c(B2 - A2);
+	double aa = PerpDot(a, c);
+	double bb = PerpDot(b, c);
+
+	if (f < 0.0)
+	{
+		if (aa > 0.0)     return false;
+		if (bb > 0.0)     return false;
+		if (aa < f)     return false;
+		if (bb < f)     return false;
+	}
+	else
+	{
+		if (aa < 0.0)     return false;
+		if (bb < 0.0)     return false;
+		if (aa > f)     return false;
+		if (bb > f)     return false;
+	}
+	return true;
+}

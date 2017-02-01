@@ -24,6 +24,8 @@ CResourceManager::~CResourceManager()
 	// Remove meshes
 	mpMyEngine->RemoveMesh(mpParticleMesh);
 	mpMyEngine->RemoveMesh(mpPlayerMesh);
+	mpMyEngine->RemoveMesh(mpCubeMesh);
+	mpMyEngine->RemoveMesh(mpDummyMesh);
 
 	// Delete the 3D engine now we are finished with it
 	mpMyEngine->Delete();
@@ -39,6 +41,8 @@ void CResourceManager::LoadResources()
 	mpPlayerMesh = mpMyEngine->LoadMesh(SPACESHIP_MESH);
 	mpParticleMesh = mpMyEngine->LoadMesh(PARTICLE_MESH);
 	mpQuadMesh = mpMyEngine->LoadMesh(QUAD_MESH);
+	mpCubeMesh = mpMyEngine->LoadMesh(CUBE_MESH);
+	mpDummyMesh = mpMyEngine->LoadMesh(DUMMY_MESH);
 }
 
 

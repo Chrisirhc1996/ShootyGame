@@ -154,14 +154,49 @@ CVector3 CameraPosition(tle::ICamera* cam);
 // Get global camera facing direction as a CVector3
 CVector3 CameraFacing(tle::ICamera* cam);
 
+
 //------------------------------------------
 // Picking Function
 //------------------------------------------
 
-
 // Calculate the world coordinates of a point on the near clip plane corresponding to given 
 // x and y pixel coordinates using this camera and near clip distance
 CVector3 WorldPointFromPixel( int x, int y, tle::ICamera* camera, float nearClip, tle::I3DEngine* engine );
+
+
+//------------------------------------------
+// Line intersection
+//------------------------------------------
+
+class CPoint
+{
+public:
+	double x;
+	double y;
+
+	// Constructors
+	CPoint() {/*default*/ }
+	CPoint(float x, float y) :
+		x{ static_cast<double>(x) }, y{ static_cast<double>(y) }
+	{ /*empty*/ }
+	CPoint(double x, double y) :
+		x{ x }, y{ y }
+	{ /*empty*/ }
+	CPoint(const CPoint& p1) :
+		x{ p1.x }, y{ p1.y }
+	{ /*empty*/ }
+};
+
+inline CPoint operator-(const CPoint& p1, const CPoint& p2)
+{
+	return CPoint(p1.x - p2.x, p1.y - p2.y);
+}
+
+inline double Dot(const CPoint& a, const CPoint& b) { return (a.x*b.x) + (a.y*b.y); }
+inline double PerpDot(const CPoint& a, const CPoint& b) { return (a.y*b.x) - (a.x*b.y); }
+
+bool LineCollision(const CPoint& A1, const CPoint& A2,
+	const CPoint& B1, const CPoint& B2);
 
 
 #endif

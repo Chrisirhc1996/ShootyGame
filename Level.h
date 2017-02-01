@@ -4,8 +4,10 @@
 #include <TL-Engine.h>
 #include <memory>
 #include <list>
+#include <vector>
 
 class CResourceManager;
+class CEntity;
 class CPlayer;
 class CEnemy;
 class CAmmo;
@@ -18,14 +20,15 @@ private:
 
 	CResourceManager* mpResources;
 	
-	tle::IModel* mpUIBorder;
-	tle::IModel* mpUIBorder2;
+	tle::IModel* mpBackgroundParent;			// Used to move the whole background as one
+	std::vector<tle::IModel*> mBackground;		// The full background spanning multiple screens
 
 	std::unique_ptr<CPlayer> mpPlayer;
 	std::list<std::unique_ptr<CEnemy>> mEnemies;
 
 	std::list<std::unique_ptr<CAmmo>> mAmmo;			// All bullets, laser beams etc, on the screen
 	std::list<std::unique_ptr<CAmmo>> mResetBullets;	// Bullets waiting to be reused
+	std::list<std::unique_ptr<CAmmo>> mResetBeams;		// Laser beams waiting to be reused
 
 	float mBackgroundSpeed;			// Scroll speed
 
@@ -42,9 +45,8 @@ private:
 	// Private Methods //
 
 	// Check collisions
-	bool CollisionCheckEnemies(CEnemy* enemy);
-	bool CollisionCheckPlayer(CPlayer* player);
+	bool CollisionCheck(CEntity* pTargetEntity, bool isEnemy);
 
-	void ScrollingBackground();
+	void ScrollingBackground(float frameTime);
 };
 

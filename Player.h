@@ -21,7 +21,7 @@ private:
 public:
 	// Constructor
 	CPlayer(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList,
-		std::list<std::unique_ptr<CAmmo>>& resetBullets);
+		std::list<std::unique_ptr<CAmmo>>& resetlist);
 	//  Destructor
 	virtual ~CPlayer();
 
@@ -29,7 +29,7 @@ public:
 	virtual void Move(float frameTime);
 
 	// Setters
-	int LoseALife() { return --mLives; }
+	inline int LoseALife() { return --mLives; }
 
 
 private:

@@ -10,7 +10,7 @@
 #include "Ammo.h"
 
 class CResourceManager;
-class CEnemy;
+//class CEnemy;
 
 class CBlaster : public CWeapon
 {
@@ -33,16 +33,16 @@ public:
 	virtual ~CBlaster();
 
 	// If weapon not on cooldown, fire
-	virtual void ShootWeapon(float xPos, float yPos);
-	virtual void UpdateTimer(float frameTime) { mFiringTimer += frameTime; }
+	inline virtual void ShootWeapon(float xPos, float yPos);
+	inline virtual void UpdateTimer(float frameTime) { mFiringTimer += frameTime; }
 
 	// Getters
-	float GetLifetime() const { return mLifetime; }
-	float GetSpeed() const { return mSpeed; }
+	inline float GetLifetime() const { return mLifetime; }
+	inline float GetSpeed() const { return mSpeed; }
 
 	// Setters
-	void SetLifetime(float lifetime) { mLifetime = lifetime; }
-	void SetSpeed(float speed) { mSpeed = speed; }
+	inline void SetLifetime(float lifetime) { mLifetime = lifetime; }
+	inline void SetSpeed(float speed) { mSpeed = speed; }
 
 
 private:
