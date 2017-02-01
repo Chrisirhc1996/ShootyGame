@@ -4,6 +4,9 @@
 #include <TL-Engine.h>
 #include "ResourceManager.h"
 
+class CEnemy;
+
+
 class CWeapon
 {
 private:
@@ -11,18 +14,22 @@ private:
 
 	CResourceManager* mpResources;
 
+	bool mEnemyWeapon;
+
 public:
 	// Constructor
-	CWeapon(CResourceManager* pResources);
+	CWeapon(CResourceManager* pResources, bool enemyWeapon);
 	//  Destructor
 	virtual ~CWeapon();
 
-	virtual void MoveWeaponParticles(float frameTime) = 0;
 	virtual void ShootWeapon(float xPos, float yPos) = 0;
+	virtual void UpdateTimer(float frameTime) = 0;
+
+	// Getters
+	bool IsEnemyWeapon() const { return mEnemyWeapon; }
 
 protected:
 	// Protected Methods //
-
-	tle::IMesh* GetWeaponMesh() { return mpResources->GetQuadMesh(); }
+	CResourceManager* GetResources() { return mpResources; }
 };
 

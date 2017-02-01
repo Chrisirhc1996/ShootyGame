@@ -9,8 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CPlasmaCannon::CPlasmaCannon(CResourceManager* pResources) :
-	CWeapon(pResources)
+CPlasmaCannon::CPlasmaCannon(CResourceManager* pResources, bool enemyShooting) :
+	CWeapon(pResources, enemyShooting)
 {
 }
 

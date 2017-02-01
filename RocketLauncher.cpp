@@ -9,8 +9,8 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CRocketLauncher::CRocketLauncher(CResourceManager* pResources) :
-	CWeapon(pResources)
+CRocketLauncher::CRocketLauncher(CResourceManager* pResources, bool enemyShooting) :
+	CWeapon(pResources, enemyShooting)
 {
 }
 

@@ -52,28 +52,28 @@ const string QUAD_MESH = "quad.x";
 struct MenuButton
 {
 	string fileName;	// For the skin
-	float radius;		// Multiplied by the window Y resolution
+	float radius;		// Radius of the model in world space
 	float xPos;			// Position in world space
 	float yPos;			// Position in world space
 	float zPos;			// Position in world space
-	float screenX;		// Position on the screen. Multiplied by the window X resolution
-	float screenY;		// Position on the screen. Multiplied by the window Y resolution
 };
 
 // Main menu buttons
-const MenuButton PLAY{ "playbutton.png", 0.0293f, 0.0f, 20.0f, 0.0f, 0.5f, 0.289f };
-const MenuButton OPTIONS{ "optionbutton.png", 0.0293f, 0.0f, 0.0f, 0.0f, 0.5f, 0.5f };
-const MenuButton QUIT{ "quitbutton.png", 0.0293f, 0.0f, -20.0f, 0.0f, 0.5f, 0.712f };
+const MenuButton PLAY{ "playbutton.png", 5.0f, 0.0f, 20.0f, 0.0f };
+const MenuButton OPTIONS{ "optionbutton.png", 5.0f, 0.0f, 0.0f, 0.0f };
+const MenuButton QUIT{ "quitbutton.png", 5.0f, 0.0f, -20.0f, 0.0f };
 
 // Pause menu buttons
-const MenuButton UNPAUSE{ "playbutton.png", 0.0293f, 20.0f, -35.0f, 0.0f, 0.619f, 0.8725f };
-const MenuButton PAUSE_OPTIONS{ "optionbutton.png", 0.0293f, 40.0f, -35.0f, 0.0f, 0.735f, 0.8725f };
-const MenuButton QUIT_TO_MENU{ "quitbutton.png", 0.0293f, 60.0f, -35.0f, 0.0f, 0.856f, 0.8725f };
+const MenuButton UNPAUSE{ "playbutton.png", 5.0f, 20.0f, -35.0f, 0.0f };
+const MenuButton PAUSE_OPTIONS{ "optionbutton.png", 5.0f, 40.0f, -35.0f, 0.0f };
+const MenuButton QUIT_TO_MENU{ "quitbutton.png", 5.0f, 60.0f, -35.0f, 0.0f };
 
 
 //////////////////
 //	Constants	//
 //////////////////
+
+const float PI = 3.141592741f;
 
 const float CAMERA_Z = -100.0f;
 

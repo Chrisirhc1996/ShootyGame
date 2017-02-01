@@ -3,10 +3,12 @@
 // Dependencies
 #include <TL-Engine.h>	// TL-Engine include file and namespace
 #include <memory>
-#include "ResourceManager.h"
-#include "MenuSystem.h"
-#include "Level.h"
 #include "Globals.h"
+
+class CResourceManager;
+class CMenuSystem;
+class CLevel;
+
 
 class CGameManager
 {

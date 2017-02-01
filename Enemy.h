@@ -1,18 +1,26 @@
 #pragma once
 
 // Dependencies
+#include "Entity.h"
 
-class CEnemy
+#include <TL-Engine.h>
+#include <memory>
+#include <list>
+
+class CResourceManager;
+class CAmmo;
+
+
+class CEnemy : public CEntity
 {
 private:
 	// Variables //
 
-
 public:
 	// Constructor
-	CEnemy();
+	CEnemy(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList);
 	//  Destructor
-	~CEnemy();
+	virtual ~CEnemy();
 
 private:
 	// Private Methods //

@@ -3,7 +3,7 @@
 //-----------------------------------------------------------------------------
 
 #include "MenuSystem.h"
-#include <D3D11.h>
+
 
 //-----------------------------------------------------------------------------
 //---- Public Methods ---------------------------------------------------------
@@ -16,6 +16,7 @@ CMenuSystem::CMenuSystem(CResourceManager* pResources, MenuStates& menuState, in
 {
 	// We always want control of the mouse pointer when we have a menu open
 	mpResources->GetEngine()->StopMouseCapture();
+	mpResources->GetCamera()->SetNearClip(nearClip);
 }
 
 
@@ -48,10 +49,18 @@ void CMenuSystem::CreateButton(const MenuButton & button)
 		button.xPos, button.yPos, button.zPos);
 	option->button->SetSkin(button.fileName);
 	option->radius = button.radius;
-	option->screenX = button.screenX;
-	option->screenY = button.screenY;
 
 	mMenuOptions.push_back(move(option));
+}
+
+// Return the world point under the mouse with the given z-distance from the camera
+CVector3 CMenuSystem::PointFromMouse(float cameraZDist)
+{
+	CVector3 mousePoint = WorldPointFromPixel(mpResources->GetEngine()->GetMouseX(),
+		mpResources->GetEngine()->GetMouseY(), mpResources->GetCamera(), nearClip, mpResources->GetEngine());
+	CVector3 mouseRay = NormaliseVector(mousePoint - CameraPosition(mpResources->GetCamera()));
+	float rayDistance = cameraZDist / Dot(mouseRay, CameraFacing(mpResources->GetCamera()));
+	return CameraPosition(mpResources->GetCamera()) + mouseRay * rayDistance;
 }
 
 // Do cursor collision detection on the buttons
@@ -68,31 +77,14 @@ void CMenuSystem::SelectMenuOption(GameStates& state)
 			widthAdjustment = mVertWindowSize / 200;
 		}
 
+		CVector3 worldPos = PointFromMouse(-CAMERA_Z);
+
 		// Go through each menu option
 		for (auto& option : mMenuOptions)
 		{
-			// Use raycasting.... no access to required info 
-			// 
-			// Let's cheat instead :)
-			//-----------------------------------------------------------------
-			// Do we need adjustments???
-
-			// - static_cast<float>(widthAdjustment);
-			// - static_cast<float>(heightAdjustment);
-
-			float buttonXPos = option->screenX * mHorizWindowSize;
-			float buttonYPos = option->screenY * mVertWindowSize;
-
-
-			// Vector from pointer to button centre
-			float x = buttonXPos - static_cast<float>(mMouseX);
-			float y = buttonYPos - static_cast<float>(mMouseY);
-
-			// Distance from the pointer to the button centre
-			float distance = sqrtf(x*x + y*y);
-
 			// If the mouse pointer is in collision with the menu options
-			if (distance < option->radius * mHorizWindowSize)
+			if (fabs(option->button->GetX() - worldPos.x) < option->radius &&
+				fabs(option->button->GetY() - worldPos.y) < option->radius)
 			{		
 				// Main menu selections
 				if (mMenuState == MenuStates::MAIN_MENU)

@@ -4,53 +4,29 @@
 
 #include "Blaster.h"
 
+#include "Bullet.h"
 
 //-----------------------------------------------------------------------------
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CBlaster::CBlaster(CResourceManager* pResources) :
-	CWeapon(pResources)
+CBlaster::CBlaster(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList, bool enemyShooting) :
+	CWeapon(pResources, enemyShooting), mAmmoList{ ammoList }
 {
 	mLifetime = 4.0f;
-	mSpeed = 60.0f;
 	mRateOfFire = 0.2f;
+	if (enemyShooting)
+		mSpeed = -60.0f;
+	else
+		mSpeed = 60.0f;
 }
 
 
 CBlaster::~CBlaster()
 {
-	// Clean up models
-	for (auto& bullet : bullets)
-	{
-		GetWeaponMesh()->RemoveModel(bullet->mpBulletModel);
-	}
-	for (auto& bullet : resetBullets)
-	{
-		GetWeaponMesh()->RemoveModel(bullet->mpBulletModel);
-	}
 }
 
-void CBlaster::MoveWeaponParticles(float frameTime)
-{
-	bool bulletExpired = false;
-	for (auto& bullet : bullets)
-	{
-		bullet->mpBulletModel->MoveX(mSpeed * frameTime);
-		bullet->mLifeLeft -= frameTime;
 
-		if (bullet->mLifeLeft <= 0.0f)
-		{
-			bullet->mpBulletModel->MoveY(1000.0f);
-			bulletExpired = true;
-			resetBullets.push_back(move(bullet));
-		}
-	}
-	if (bulletExpired)
-		bullets.pop_back();
-
-	mFiringTimer += frameTime;
-}
 
 void CBlaster::ShootWeapon(float xPos, float yPos)
 {
@@ -67,13 +43,22 @@ void CBlaster::ShootWeapon(float xPos, float yPos)
 
 void CBlaster::CreateBullet(float xPos, float yPos)
 {
-	if (resetBullets.size() != 0)
+	// If we have bullets already made and in reserve, move a bullet from the reserse to the active list
+	if (CBlaster::mResetBullets.size() != 0)
 	{
-		resetBullets.back()->mLifeLeft = mLifetime;
-		resetBullets.back()->mpBulletModel->SetPosition(xPos, yPos, 0.0f);
-		bullets.push_front(move(resetBullets.back()));
-		resetBullets.pop_back();
+		CBlaster::mResetBullets.back()->SetFromEnemy(IsEnemyWeapon());
+		CBlaster::mResetBullets.back()->SetSpeed(mSpeed);
+		CBlaster::mResetBullets.back()->SetLifetime(mLifetime);
+		CBlaster::mResetBullets.back()->GetModel()->SetPosition(xPos, yPos, 0.0f);
+		mAmmoList.push_front(move(CBlaster::mResetBullets.back()));
+		CBlaster::mResetBullets.pop_back();
 	}
 	else
-		bullets.push_front(std::make_unique<SBullet>(GetWeaponMesh(), mLifetime, mSpeed, xPos, yPos));
+		// Create a new bullet from scratch
+		mAmmoList.push_front(std::make_unique<CBullet>(GetResources(), mLifetime, mSpeed, xPos, yPos, IsEnemyWeapon()));
 }
+
+
+//------------------------------------------------------------------------------------------
+// The static reserved list for expired bullets specifically
+std::list<std::unique_ptr<CAmmo>> CBlaster::mResetBullets;
