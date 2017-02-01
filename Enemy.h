@@ -18,7 +18,8 @@ private:
 
 public:
 	// Constructor
-	CEnemy(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList);
+	CEnemy(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList,
+		std::list<std::unique_ptr<CAmmo>>& resetBullets);
 	//  Destructor
 	virtual ~CEnemy();
 

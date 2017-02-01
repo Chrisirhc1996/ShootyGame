@@ -20,7 +20,8 @@ private:
 
 public:
 	// Constructor
-	CPlayer(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList);
+	CPlayer(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList,
+		std::list<std::unique_ptr<CAmmo>>& resetBullets);
 	//  Destructor
 	virtual ~CPlayer();
 

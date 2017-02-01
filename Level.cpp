@@ -28,11 +28,11 @@ CLevel::CLevel(CResourceManager* pResources) :
 	mpUIBorder2->SetSkin(BORDER);
 
 	// Create player
-	mpPlayer = std::make_unique<CPlayer>(mpResources, mAmmo);
+	mpPlayer = std::make_unique<CPlayer>(mpResources, mAmmo, mResetBullets);
 
 	//TEMP....
 	// Create an enemy
-	mEnemies.push_back(std::make_unique<CEnemy>(mpResources, mAmmo));
+	mEnemies.push_back(std::make_unique<CEnemy>(mpResources, mAmmo, mResetBullets));
 }
 
 
@@ -46,11 +46,10 @@ CLevel::~CLevel()
 	{
 		mpResources->GetQuadMesh()->RemoveModel(ammo->GetModel());
 	}
-	for (auto& ammo : CBlaster::GetBulletReserve())
+	for (auto& ammo : mResetBullets)
 	{
 		mpResources->GetQuadMesh()->RemoveModel(ammo->GetModel());
 	}
-	CBlaster::GetBulletReserve().clear();
 }
 
 // Play the current level  (Loop)
@@ -98,7 +97,7 @@ bool CLevel::PlayLevel(float frameTime)
 			if (moveThis == i->get())
 			{
 				if (moveThis->GetAmmoType() == BULLETS)
-					CBlaster::GetBulletReserve().push_back(move(*i));
+					mResetBullets.push_back(move(*i));
 				else if (moveThis->GetAmmoType() == LASERS)
 				{/* for when lasers get implimented */}
 				else if (moveThis->GetAmmoType() == ROCKETS)
@@ -198,4 +197,9 @@ bool CLevel::CollisionCheckPlayer(CPlayer* player)
 		}
 	}
 	return false;
+}
+
+void CLevel::ScrollingBackground()
+{
+	// TODO...
 }

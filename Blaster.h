@@ -22,12 +22,13 @@ private:
 	float mRateOfFire;		// How often we shoot a bullet
 	float mFiringTimer = 0.0f;
 
-	static std::list<std::unique_ptr<CAmmo>> mResetBullets;		// Bullets waiting to be reused
-	std::list<std::unique_ptr<CAmmo>>& mAmmoList;
+	std::list<std::unique_ptr<CAmmo>>& mResetBullets;		// Bullets waiting to be reused
+	std::list<std::unique_ptr<CAmmo>>& mAmmoList;			// The full list of all ammo on screen
 
 public:
 	// Constructor
-	CBlaster(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList, bool enemyShooting = true);
+	CBlaster(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList,
+		std::list<std::unique_ptr<CAmmo>>& resetBullets, bool enemyShooting = true);
 	//  Destructor
 	virtual ~CBlaster();
 
@@ -38,7 +39,6 @@ public:
 	// Getters
 	float GetLifetime() const { return mLifetime; }
 	float GetSpeed() const { return mSpeed; }
-	static std::list<std::unique_ptr<CAmmo>>& GetBulletReserve() { return mResetBullets; }
 
 	// Setters
 	void SetLifetime(float lifetime) { mLifetime = lifetime; }
