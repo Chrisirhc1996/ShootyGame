@@ -13,12 +13,12 @@
 //---- Public Methods ---------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-CPlayer::CPlayer(CResourceManager* pResources) :
+CPlayer::CPlayer(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList) :
 	CEntity{ pResources }
 {
 	SetModel(GetResources()->GetPlayerMesh()->CreateModel(PLAYER_START_X, PLAYER_START_Y));
 	GetModel()->RotateY(90.0f);
-	std::unique_ptr<CWeapon> weapon = std::make_unique<CBlaster>(GetResources(), false);
+	std::unique_ptr<CWeapon> weapon = std::make_unique<CBlaster>(GetResources(), ammoList, false);
 	SetWeaponSystem(weapon);
 }
 

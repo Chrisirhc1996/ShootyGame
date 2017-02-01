@@ -10,6 +10,7 @@ class CPlayer;
 class CEnemy;
 class CAmmo;
 
+
 class CLevel
 {
 private:
@@ -22,7 +23,7 @@ private:
 
 	std::unique_ptr<CPlayer> mpPlayer;
 	std::list<std::unique_ptr<CEnemy>> mEnemies;
-	//std::list<std::unique_ptr<CAmmo>> mAmmo;		// All bullets, laser beams etc, on the screen
+	std::list<std::unique_ptr<CAmmo>> mAmmo;		// All bullets, laser beams etc, on the screen
 
 public:
 	// Constructor
@@ -31,9 +32,13 @@ public:
 	~CLevel();
 
 	// Play the current level
-	void PlayLevel(float frameTime);
+	bool PlayLevel(float frameTime);
 
 private:
 	// Private Methods //
+
+	// Check collisions
+	bool CollisionCheckEnemies(CEnemy* enemy);
+	bool CollisionCheckPlayer(CPlayer* player);
 };
 

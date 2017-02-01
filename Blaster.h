@@ -4,9 +4,10 @@
 #include "Weapon.h"
 
 #include <TL-Engine.h>
-#include <deque>
+#include <list>
 #include <memory>
 #include "Globals.h"
+#include "Ammo.h"
 
 class CResourceManager;
 class CEnemy;
@@ -17,49 +18,32 @@ private:
 	// Variables //
 	
 	float mLifetime;		// Bullet Duration
-	float mSpeed;			// Speed
+	float mSpeed;			// Bullet Speed
 	float mRateOfFire;		// How often we shoot a bullet
 	float mFiringTimer = 0.0f;
 
-	struct SBullet			// Individual bullet
-	{
-		tle::IModel* mpBulletModel;
-		float mLifeLeft;
-		float mSpeed;
-
-		SBullet(tle::IMesh* pBulletMesh, float lifetime, float speed, float xPos, float yPos) :
-			mLifeLeft{ lifetime }, mSpeed{ speed }
-		{
-			mpBulletModel = pBulletMesh->CreateModel(xPos, yPos);
-			mpBulletModel->SetSkin(BULLET_SPRITE);
-			mpBulletModel->Scale(0.1f);
-		}
-	};
-
-	std::deque<std::unique_ptr<SBullet>> bullets;			// All bullets
-	std::deque<std::unique_ptr<SBullet>> resetBullets;		// Bullets waiting to be reused
+	static std::list<std::unique_ptr<CAmmo>> mResetBullets;		// Bullets waiting to be reused
+	std::list<std::unique_ptr<CAmmo>>& mAmmoList;
 
 public:
 	// Constructor
-	CBlaster(CResourceManager* pResources, bool enemyShooting = true);
+	CBlaster(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList, bool enemyShooting = true);
 	//  Destructor
 	virtual ~CBlaster();
 
-	// Moves projectiles and age them
-	virtual void MoveWeaponParticles(float frameTime);
 	// If weapon not on cooldown, fire
 	virtual void ShootWeapon(float xPos, float yPos);
-	// Check collisions
-	virtual bool CollisionCheck(CEnemy* enemy);
+	virtual void UpdateTimer(float frameTime) { mFiringTimer += frameTime; }
 
 	// Getters
 	float GetLifetime() const { return mLifetime; }
 	float GetSpeed() const { return mSpeed; }
+	static std::list<std::unique_ptr<CAmmo>>& GetBulletReserve() { return mResetBullets; }
 
 	// Setters
 	void SetLifetime(float lifetime) { mLifetime = lifetime; }
 	void SetSpeed(float speed) { mSpeed = speed; }
-	
+
 
 private:
 	// Private Methods //

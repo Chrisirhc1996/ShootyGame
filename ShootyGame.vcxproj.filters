@@ -53,7 +53,7 @@
     <ClCompile Include="Ammo.cpp">
       <Filter>Game Objects\Entities\Ammo</Filter>
     </ClCompile>
-    <ClCompile Include="Bullets.cpp">
+    <ClCompile Include="Bullet.cpp">
       <Filter>Game Objects\Entities\Ammo</Filter>
     </ClCompile>
   </ItemGroup>
@@ -156,7 +156,7 @@
     <ClInclude Include="Ammo.h">
       <Filter>Game Objects\Entities\Ammo</Filter>
     </ClInclude>
-    <ClInclude Include="Bullets.h">
+    <ClInclude Include="Bullet.h">
       <Filter>Game Objects\Entities\Ammo</Filter>
     </ClInclude>
   </ItemGroup>

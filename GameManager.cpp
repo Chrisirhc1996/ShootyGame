@@ -78,7 +78,17 @@ void CGameManager::RunGame()
 				//--------------------------------------------------------
 				// GAME CODE HERE...
 				//--------------------------------------------------------
-				mpLevel->PlayLevel(mFrameTime);
+				if (!mpLevel->PlayLevel(mFrameTime))
+				{
+					// All lives lost!
+
+					mGameState = GameStates::MENU;
+
+					// Delete the game level as no longer need it
+					mpLevel.reset();
+					// Recreate the main menu
+					mpMenu = std::make_unique<CMainMenu>(mpResources.get(), mMenuState, mHorizontal, mVertical, mFullscreen);
+				}
 			}
 
 			if (mGameState == GameStates::MENU)

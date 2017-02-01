@@ -5,8 +5,10 @@
 
 #include <TL-Engine.h>
 #include <memory>
+#include <list>
 
 class CResourceManager;
+class CAmmo;
 
 
 class CEnemy : public CEntity
@@ -16,7 +18,7 @@ private:
 
 public:
 	// Constructor
-	CEnemy(CResourceManager* pResources);
+	CEnemy(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList);
 	//  Destructor
 	virtual ~CEnemy();
 

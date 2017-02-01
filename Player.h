@@ -5,8 +5,10 @@
 
 #include <TL-Engine.h>
 #include <memory>
+#include <list>
 
 class CResourceManager;
+class CAmmo;
 
 
 class CPlayer : public CEntity
@@ -14,16 +16,19 @@ class CPlayer : public CEntity
 private:
 	// Variables //
 
-	int mLives;			// How many lives the player has left
+	int mLives = 3;			// How many lives the player has left
 
 public:
 	// Constructor
-	CPlayer(CResourceManager* pResources);
+	CPlayer(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>& ammoList);
 	//  Destructor
 	virtual ~CPlayer();
 
 	// Movement within a restricted area (up, down, left or right)
 	virtual void Move(float frameTime);
+
+	// Setters
+	int LoseALife() { return --mLives; }
 
 
 private:
