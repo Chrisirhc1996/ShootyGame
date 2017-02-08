@@ -59,6 +59,12 @@
     <ClCompile Include="LaserBeam.cpp">
       <Filter>Game Objects\Ammo</Filter>
     </ClCompile>
+    <ClCompile Include="Rocket.cpp">
+      <Filter>Game Objects\Ammo</Filter>
+    </ClCompile>
+    <ClCompile Include="PlasmaShot.cpp">
+      <Filter>Game Objects\Ammo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -163,6 +169,12 @@
       <Filter>Game Objects\Ammo</Filter>
     </ClInclude>
     <ClInclude Include="LaserBeam.h">
+      <Filter>Game Objects\Ammo</Filter>
+    </ClInclude>
+    <ClInclude Include="Rocket.h">
+      <Filter>Game Objects\Ammo</Filter>
+    </ClInclude>
+    <ClInclude Include="PlasmaShot.h">
       <Filter>Game Objects\Ammo</Filter>
     </ClInclude>
   </ItemGroup>

@@ -16,11 +16,11 @@ CPlasmaCannon::CPlasmaCannon(CResourceManager* pResources, std::list<std::unique
 	CWeapon(pResources, enemyShooting), mAmmoList{ ammoList }, mResetPlasma{ resetPlasma }
 {
 	mLifetime = 4.0f;
-	mRateOfFire = 1.0f;
+	mRateOfFire = 2.0f;
 	if (enemyShooting)
-		mSpeed = -30.0f;
+		mSpeed = -20.0f;
 	else
-		mSpeed = 30.0f;
+		mSpeed = 20.0f;
 }
 
 

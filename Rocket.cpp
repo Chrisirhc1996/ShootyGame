@@ -31,7 +31,7 @@ bool CRocket::Move(float frameTime)
 
 	if (GetLifeTimeRemaining() <= 0.0f)
 	{
-		GetModel()->MoveY(1000.0f);
+		GetModel()->MoveY(600.0f);
 		return true;
 	}
 	return false;

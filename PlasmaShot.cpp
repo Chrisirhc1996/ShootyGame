@@ -15,7 +15,7 @@ CPlasmaShot::CPlasmaShot(CResourceManager* pResources, float lifetime, float spe
 	CAmmo(pResources, isEnemyWeapon, lifetime), mSpeed{ speed }
 {
 	SetModel(GetResources()->GetQuadMesh()->CreateModel(xPos, yPos));
-	GetModel()->SetSkin(PARTICLE_MESH);
+	GetModel()->SetSkin(PLASMA_SPRITE);
 	GetModel()->Scale(0.5f);
 }
 
@@ -31,7 +31,7 @@ bool CPlasmaShot::Move(float frameTime)
 
 	if (GetLifeTimeRemaining() <= 0.0f)
 	{
-		GetModel()->MoveY(1000.0f);
+		GetModel()->MoveY(800.0f);
 		return true;
 	}
 	return false;

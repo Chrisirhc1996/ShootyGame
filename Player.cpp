@@ -9,6 +9,8 @@
 #include "Weapon.h"
 #include "Blaster.h"
 #include "LaserGun.h"
+#include "PlasmaCannon.h"
+#include "RocketLauncher.h"
 
 //-----------------------------------------------------------------------------
 //---- Public Methods ---------------------------------------------------------
@@ -20,7 +22,10 @@ CPlayer::CPlayer(CResourceManager* pResources, std::list<std::unique_ptr<CAmmo>>
 {
 	SetModel(GetResources()->GetPlayerMesh()->CreateModel(PLAYER_START_X, PLAYER_START_Y));
 	GetModel()->RotateY(90.0f);
-	std::unique_ptr<CWeapon> weapon = std::make_unique<CLaserGun>(GetResources(), ammoList, resetList, false);
+	std::unique_ptr<CWeapon> weapon = std::make_unique<CBlaster>(GetResources(), ammoList, resetList, false);
+	//std::unique_ptr<CWeapon> weapon = std::make_unique<CLaserGun>(GetResources(), ammoList, resetList, false);
+	//std::unique_ptr<CWeapon> weapon = std::make_unique<CPlasmaShot>(GetResources(), ammoList, resetList, false);
+	//std::unique_ptr<CWeapon> weapon = std::make_unique<CRocketLauncher>(GetResources(), ammoList, resetList, false);
 	SetWeaponSystem(weapon);
 }
 
