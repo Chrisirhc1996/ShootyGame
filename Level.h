@@ -29,6 +29,8 @@ private:
 	std::list<std::unique_ptr<CAmmo>> mAmmo;			// All bullets, laser beams etc, on the screen
 	std::list<std::unique_ptr<CAmmo>> mResetBullets;	// Bullets waiting to be reused
 	std::list<std::unique_ptr<CAmmo>> mResetBeams;		// Laser beams waiting to be reused
+	std::list<std::unique_ptr<CAmmo>> mResetPlasma;	    // Plasma shots waiting to be reused
+	std::list<std::unique_ptr<CAmmo>> mResetRockets;	// Rockets waiting to be reused
 
 	float mBackgroundSpeed;			// Scroll speed
 

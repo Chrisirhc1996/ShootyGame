@@ -48,6 +48,8 @@ const string BACKGROUND_1 = "tileable-nebula.png";
 const string BACKGROUND_2 = "tileable-classic-nebula.jpg";
 const string BULLET_SPRITE = "Bullet.png";
 const string LASER_SPRITE = "beam.jpg";
+const string PLASMA_SPRITE = "012_tlxadd.tga";
+const string ROCKET_SPRITE = "011_tlxadd.tga";
 
 
 //////////////

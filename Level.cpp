@@ -63,6 +63,14 @@ CLevel::~CLevel()
 			mpResources->GetQuadMesh()->RemoveModel(ammo->GetBeam());
 			mpResources->GetDummyMesh()->RemoveModel(ammo->GetModel());
 		}
+		else if (ammo->GetAmmoType() == PLASMA)
+		{
+			mpResources->GetQuadMesh()->RemoveModel(ammo->GetModel());
+		}
+		else if (ammo->GetAmmoType() == ROCKETS)
+		{
+			mpResources->GetQuadMesh()->RemoveModel(ammo->GetModel());
+		}
 	}
 	for (auto& ammo : mResetBullets)
 	{
@@ -72,6 +80,14 @@ CLevel::~CLevel()
 	{
 		mpResources->GetQuadMesh()->RemoveModel(ammo->GetBeam());
 		mpResources->GetDummyMesh()->RemoveModel(ammo->GetModel());		
+	}
+	for (auto& ammo : mResetPlasma)
+	{
+		mpResources->GetQuadMesh()->RemoveModel(ammo->GetModel());
+	}
+	for (auto& ammo : mResetRockets)
+	{
+		mpResources->GetQuadMesh()->RemoveModel(ammo->GetModel());
 	}
 }
 
@@ -151,10 +167,12 @@ bool CLevel::PlayLevel(float frameTime)
 				else if (moveThis->GetAmmoType() == LASERS)
 					mResetBeams.push_back(move(*i));
 				else if (moveThis->GetAmmoType() == ROCKETS)
-				{/* for when rockets get implimented */
+				{
+					mResetPlasma.push_back(move(*i));
 				}
 				else if (moveThis->GetAmmoType() == PLASMA)
-				{/* for when plasma gets implimented */
+				{
+					mResetRockets.push_back(move(*i));
 				}
 
 				i = mAmmo.erase(i);
@@ -251,8 +269,12 @@ bool CLevel::CollisionCheck(CEntity* pTargetEntity, bool withEnemy)
 				break;
 			}
 			case ROCKETS:
+				xDistance = fabs(ammo->GetXPos() - pTargetEntity->GetXPos());
+				yDistance = fabs(ammo->GetYPos() - pTargetEntity->GetYPos());
 				break;
 			case PLASMA:
+				xDistance = fabs(ammo->GetXPos() - pTargetEntity->GetXPos());
+				yDistance = fabs(ammo->GetYPos() - pTargetEntity->GetYPos());
 				break;
 			default:
 				break;
@@ -264,7 +286,10 @@ bool CLevel::CollisionCheck(CEntity* pTargetEntity, bool withEnemy)
 				// Theres been a collision!
 
 				// Get the bullet out of the way as if destroyed where it will wait to expire and be recycled
-				ammo->SetYPos(1000.0f);
+				if (ammo->GetAmmoType() != PLASMA)
+				{
+					ammo->SetYPos(1000.0f);
+				}
 				return true;
 			}
 		}
